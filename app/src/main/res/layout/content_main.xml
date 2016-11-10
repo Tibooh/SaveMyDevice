@@ -12,8 +12,8 @@
     tools:context="com.eservices.tandrentreprise.savemydevice.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <TextView
+    <FrameLayout
+        android:id="@+id/content_frame"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_height="wrap_content" />
 </RelativeLayout>
