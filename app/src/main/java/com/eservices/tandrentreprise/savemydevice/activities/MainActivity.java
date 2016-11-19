@@ -1,6 +1,6 @@
-package com.eservices.tandrentreprise.savemydevice;
+package com.eservices.tandrentreprise.savemydevice.activities;
 
-
+import com.eservices.tandrentreprise.savemydevice.R;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -16,7 +16,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
+import com.eservices.tandrentreprise.savemydevice.fragments.DemandFragment;
+import com.eservices.tandrentreprise.savemydevice.fragments.MessagesFragment;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -104,17 +106,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         Fragment fragment = null;
 
-        if (id == R.id.nav_camera) {
-            fragment = new CameraFragment();
-        } else if (id == R.id.nav_gallery) {
-            fragment = new GalleryFragment();
-        } else if (id == R.id.nav_slideshow) {
+        if (id == R.id.nav_demand) {
+            fragment = new DemandFragment();
+        } else if (id == R.id.nav_message) {
+            fragment = new MessagesFragment();
+        } else if (id == R.id.nav_settings) {
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_disconnect) {
 
         }
 
