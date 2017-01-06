@@ -1,4 +1,4 @@
-package com.eservices.tandrentreprise.savemydevice.Models;
+package com.eservices.tandrentreprise.savemydevice.models;
 
 import java.io.Serializable;
 
