@@ -16,9 +16,9 @@ import java.util.List;
  * Created by stamper on 06/10/16.
  */
 
-public class ContactsAdapter extends ArrayAdapter<Contact> {
+public class DemandsAdapter extends ArrayAdapter<Contact> {
 
-    public ContactsAdapter(Context context, List<Contact> contacts) {
+    public DemandsAdapter(Context context, List<Contact> contacts) {
         super(context, R.layout.item_list, contacts);
     }
 
