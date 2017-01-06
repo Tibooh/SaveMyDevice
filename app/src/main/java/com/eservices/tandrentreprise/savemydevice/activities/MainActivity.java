@@ -17,9 +17,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.eservices.tandrentreprise.savemydevice.fragments.DemandFragment;
+import com.eservices.tandrentreprise.savemydevice.fragments.LegalFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.MessagesFragment;
+import com.eservices.tandrentreprise.savemydevice.fragments.ParametreFragment;
 
-
+/**Activity principale de l'application*/
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -28,6 +30,13 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        Fragment fragment = new DemandFragment();;
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.commit();
+        }
 
         // 3.9
         final CoordinatorLayout mainLayout = (CoordinatorLayout) findViewById(R.id.main_layout);
@@ -98,6 +107,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    //Redirections vers les pages via le menu
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     // 3.4 and 3.8
@@ -111,9 +121,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_message) {
             fragment = new MessagesFragment();
         } else if (id == R.id.nav_settings) {
-
-        } else if (id == R.id.nav_disconnect) {
-
+            fragment = new ParametreFragment();
+        } else if (id == R.id.nav_legal) {
+            fragment = new LegalFragment();
         }
 
         if (fragment != null) {

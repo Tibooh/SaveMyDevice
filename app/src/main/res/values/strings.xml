@@ -8,4 +8,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="email">Adresse email</string>
+    <string name="phone">Numéro de téléphone</string>
+    <string name="name">Prénom et Nom</string>
 </resources>
