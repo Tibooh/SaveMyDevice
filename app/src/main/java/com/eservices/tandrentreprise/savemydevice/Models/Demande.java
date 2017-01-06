@@ -1,10 +1,10 @@
-package com.eservices.tandrentreprise.savemydevice;
+package com.eservices.tandrentreprise.savemydevice.Models;
 
 import java.io.Serializable;
 
 /**
- * Created by stamper on 30/09/16.
- */
+ * Modele d'une demande d'aide
+ *  */
 
 public class Demande implements Serializable {
 
