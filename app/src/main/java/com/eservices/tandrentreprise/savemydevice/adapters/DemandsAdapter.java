@@ -1,7 +1,7 @@
 package com.eservices.tandrentreprise.savemydevice.adapters;
 
 import android.content.Context;
-import com.eservices.tandrentreprise.savemydevice.Demande;
+import com.eservices.tandrentreprise.savemydevice.model.Demande;
 import com.eservices.tandrentreprise.savemydevice.R;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;

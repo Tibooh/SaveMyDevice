@@ -2,6 +2,8 @@ package com.eservices.tandrentreprise.savemydevice;
 
 import android.app.Application;
 
+import com.eservices.tandrentreprise.savemydevice.model.Demande;
+
 import java.util.ArrayList;
 import java.util.List;
 
