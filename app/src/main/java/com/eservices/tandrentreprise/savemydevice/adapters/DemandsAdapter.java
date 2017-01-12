@@ -1,7 +1,7 @@
 package com.eservices.tandrentreprise.savemydevice.adapters;
 
 import android.content.Context;
-import com.eservices.tandrentreprise.savemydevice.Contact;
+import com.eservices.tandrentreprise.savemydevice.model.Demande;
 import com.eservices.tandrentreprise.savemydevice.R;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -13,12 +13,11 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Created by stamper on 06/10/16.
+ * Adapter de la liste des demandes
  */
+public class DemandsAdapter extends ArrayAdapter<Demande> {
 
-public class DemandsAdapter extends ArrayAdapter<Contact> {
-
-    public DemandsAdapter(Context context, List<Contact> contacts) {
+    public DemandsAdapter(Context context, List<Demande> contacts) {
         super(context, R.layout.item_list, contacts);
     }
 
@@ -29,7 +28,7 @@ public class DemandsAdapter extends ArrayAdapter<Contact> {
         View content = inflater.inflate(R.layout.item_list, null);
 
         TextView name = (TextView) content.findViewById(R.id.name);
-        Contact cur = getItem(position);
+        Demande cur = getItem(position);
         name.setText(cur.firstName + " " + cur.lastName);
 
         return content;

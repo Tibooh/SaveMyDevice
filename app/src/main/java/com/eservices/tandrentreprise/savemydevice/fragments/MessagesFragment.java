@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-
+/**Fragment de la messagerie de l'applciation*/
 public class MessagesFragment extends Fragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -22,6 +22,6 @@ public class MessagesFragment extends Fragment {
         public void onViewCreated(View view, Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
             // Vous pouvez changer le titre dans la toolbar de vos differents fragments
-            getActivity().setTitle("Menu Gallery");
+            getActivity().setTitle("Messages");
         }
 }
