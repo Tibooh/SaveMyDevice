@@ -36,3 +36,5 @@ local.properties
 ehthumbs.db
 Thumbs.db
 gradle.properties
+build/generated/mockable-android-23.jar
+build/intermediates/dex-cache/cache.xml
