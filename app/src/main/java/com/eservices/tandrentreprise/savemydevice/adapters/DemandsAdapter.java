@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class DemandsAdapter extends ArrayAdapter<Demande> {
 
-    public DemandsAdapter(Context context, List<Demande> contacts) {
-        super(context, R.layout.item_list, contacts);
+    public DemandsAdapter(Context context, List<Demande> demands) {
+        super(context, R.layout.item_list, demands);
     }
 
     @NonNull
