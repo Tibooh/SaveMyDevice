@@ -8,20 +8,20 @@ import java.io.Serializable;
 
 public class Demande implements Serializable {
 
-    public String firstName;
-    public String lastName;
-    public String phoneNumber;
-    public String emailAddress;
+    public String title;
+    public String detail;
+    public String type;
+    public Integer idUser;
 
-    public Demande(String firstName, String lastName, String phoneNumber, String emailAddress) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.emailAddress = emailAddress;
+    public Demande(String title, String detail, String type, Integer idUser) {
+        this.title = title;
+        this.detail = detail;
+        this.type = type;
+        this.idUser = idUser;
     }
 
     @Override
     public String toString() {
-        return firstName + " " + lastName;
+        return title + " " + detail;
     }
 }
