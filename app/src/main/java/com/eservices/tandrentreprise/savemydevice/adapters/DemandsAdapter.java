@@ -3,6 +3,8 @@ package com.eservices.tandrentreprise.savemydevice.adapters;
 import android.content.Context;
 import com.eservices.tandrentreprise.savemydevice.model.Demande;
 import com.eservices.tandrentreprise.savemydevice.R;
+
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +19,8 @@ import java.util.List;
  */
 public class DemandsAdapter extends ArrayAdapter<Demande> {
 
-    public DemandsAdapter(Context context, List<Demande> contacts) {
-        super(context, R.layout.item_list, contacts);
+    public DemandsAdapter(Context context, List<Demande> demands) {
+        super(context, R.layout.item_list, demands);
     }
 
     @NonNull
@@ -27,9 +29,13 @@ public class DemandsAdapter extends ArrayAdapter<Demande> {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View content = inflater.inflate(R.layout.item_list, null);
 
-        TextView name = (TextView) content.findViewById(R.id.name);
+        TextView title = (TextView) content.findViewById(R.id.title);
+        TextView subtitle = (TextView) content.findViewById(R.id.subtitle);
+
         Demande cur = getItem(position);
-        name.setText(cur.firstName + " " + cur.lastName);
+        title.setText(cur.title+ "\n \n");
+        title.setTypeface(null, Typeface.BOLD);
+        subtitle.setText(cur.detail);
 
         return content;
     }

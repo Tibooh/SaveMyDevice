@@ -16,7 +16,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.eservices.tandrentreprise.savemydevice.fragments.DemandFragment;
+
+import com.eservices.tandrentreprise.savemydevice.fragments.CreateDemandFragment;
+import com.eservices.tandrentreprise.savemydevice.fragments.ListDemandFragment;
+import com.eservices.tandrentreprise.savemydevice.fragments.MyDemandFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.LegalFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.MessagesFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.ParametreFragment;
@@ -30,8 +33,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_home_black_24dp);
 
-        Fragment fragment = new DemandFragment();;
+        Fragment fragment = new ListDemandFragment();;
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);
@@ -44,12 +48,17 @@ public class MainActivity extends AppCompatActivity
 
         setSupportActionBar(toolbar);
 
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Fragment fragment = new CreateDemandFragment();;
+                if (fragment != null) {
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.content_frame, fragment);
+                    ft.commit();
+                }
             }
         });
 
@@ -98,13 +107,19 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        Fragment fragment = null;
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_home) {
+            fragment = new ListDemandFragment();
         }
 
-        return super.onOptionsItemSelected(item);
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.commit();
+        }
+
+        return true;
     }
 
     //Redirections vers les pages via le menu
@@ -117,7 +132,7 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = null;
 
         if (id == R.id.nav_demand) {
-            fragment = new DemandFragment();
+            fragment = new MyDemandFragment();
         } else if (id == R.id.nav_message) {
             fragment = new MessagesFragment();
         } else if (id == R.id.nav_settings) {
