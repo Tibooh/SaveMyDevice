@@ -1,6 +1,7 @@
 package com.eservices.tandrentreprise.savemydevice.fragments;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -38,6 +39,19 @@ public class ListDemandFragment extends Fragment {
                 transaction.addToBackStack(null);
                 transaction.commit();
                }
+        });
+
+        FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new CreateDemandFragment();;
+                if (fragment != null) {
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.content_frame, fragment);
+                    ft.commit();
+                }
+            }
         });
 
         return v;

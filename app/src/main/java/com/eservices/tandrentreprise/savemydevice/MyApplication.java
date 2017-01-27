@@ -2,6 +2,7 @@ package com.eservices.tandrentreprise.savemydevice;
 
 import android.app.Application;
 
+import com.eservices.tandrentreprise.savemydevice.model.Candidature;
 import com.eservices.tandrentreprise.savemydevice.model.Demande;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class MyApplication extends Application {
 
     public List<Demande> demands;
     public List<Demande> myDemands;
+    public List<Candidature> postulants;
 
 
     boolean isConnect;
@@ -21,21 +23,23 @@ public class MyApplication extends Application {
         super.onCreate();
 
         demands = new ArrayList<>();
+        myDemands = new ArrayList<>();
+        postulants = new ArrayList<>();
 
         isConnect = false;
 
-        demands.add(new Demande("Problème ordinateur", "Orinateur ne démarre plus",       "000-555-0001", "d.depaul@gmail.com"));
-        demands.add(new Demande("Problème PC","Il ne démarre plus",    "000-555-0002", "a.schlueter@gmail.com"));
-        demands.add(new Demande("Problème tablette",   "Elle s'éteinds toute seule",   "000-555-0003", "b.carruthers@gmail.com"));
-        demands.add(new Demande("Problème fichier word",  "Il s'ouvre pas",     "000-555-0004", "g.brashler@gmail.com"));
-        demands.add(new Demande("Problème internet",  "Impossible d'acceder à internet",      "000-555-0005", "a.dammann@gmail.com"));
-        demands.add(new Demande("Lenteur internet",  "Navigateur plein de pub",      "000-555-0006", "s.harpole@gmail.com"));
+        demands.add(new Demande(1,"Problème ordinateur", "Orinateur ne démarre plus", "Hardware","Ordinateur Dell XY", 1, 1));
+        demands.add(new Demande(2,"Problème PC","Il ne démarre plus", "Hardware", "Asus rogue one",2, -1));
+        demands.add(new Demande(4,"Problème fichier word",  "Il s'ouvre pas",  "Software", "MacBook Pro", 4, -1));
+        demands.add(new Demande(5,"Problème internet",  "Impossible d'acceder à internet", "Software","MacBook air 2", 5, -1));
+        demands.add(new Demande(3,"Problème tablette",   "Elle s'éteinds toute seule",  "Hardware", "Ipad 2",3, -1));
+        demands.add(new Demande(6,"Lenteur internet",  "Navigateur plein de pub",  "Software", "Lenovo yoga", 6, -1));
 
+        myDemands.add(demands.get(0));
 
-/*        myDemands.add(demands.get(1));
-        myDemands.add(demands.get(2));
-        myDemands.add(demands.get(3));*/
-
+        postulants.add(new Candidature(1,"Roger", 15, true));
+        postulants.add(new Candidature(2,"Tibtib", 17, true));
+        postulants.add(new Candidature(3,"Jacquie", 12, false));
 
     }
 }

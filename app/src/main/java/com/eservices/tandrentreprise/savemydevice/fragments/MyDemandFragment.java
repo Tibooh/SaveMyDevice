@@ -6,15 +6,15 @@ import com.eservices.tandrentreprise.savemydevice.adapters.DemandsAdapter;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
-/**Fragment de la liste des demandes*/
+/**Fragment de la liste de mes demandes*/
 public class MyDemandFragment extends Fragment {
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -24,12 +24,20 @@ public class MyDemandFragment extends Fragment {
         list.setAdapter(new DemandsAdapter(getContext(), ((MyApplication) getActivity().getApplication()).myDemands));
 
         // TODO : Gestion du clique sur l'item (2.1)
-/*        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mCallback.onContactSelected(position);
+                DetailDemandFragment fragment = new DetailDemandFragment();
+                Bundle b = new Bundle();
+                b.putSerializable("Demande", ((MyApplication) getActivity().getApplication()).myDemands.get(position));
+                fragment.setArguments(b);
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.content_frame, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
-        });*/
+        });
+
         return v;
     }
 

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -31,8 +32,16 @@ public class DemandsAdapter extends ArrayAdapter<Demande> {
 
         TextView title = (TextView) content.findViewById(R.id.title);
         TextView subtitle = (TextView) content.findViewById(R.id.subtitle);
+        ImageView iconDemande = (ImageView)  content.findViewById(R.id.iconDemande);
+
 
         Demande cur = getItem(position);
+        if(cur.type.equals("Hardware")) {
+            iconDemande.setImageResource(R.mipmap.type_hardware);
+        }else{
+            iconDemande.setImageResource(R.mipmap.type_software);
+        }
+
         title.setText(cur.title+ "\n \n");
         title.setTypeface(null, Typeface.BOLD);
         subtitle.setText(cur.detail);

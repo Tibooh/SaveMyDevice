@@ -49,18 +49,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment fragment = new CreateDemandFragment();;
-                if (fragment != null) {
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.content_frame, fragment);
-                    ft.commit();
-                }
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -135,10 +124,14 @@ public class MainActivity extends AppCompatActivity
             fragment = new MyDemandFragment();
         } else if (id == R.id.nav_message) {
             fragment = new MessagesFragment();
+        }else if ( id == R.id.nav_add){
+            fragment = new CreateDemandFragment();
         } else if (id == R.id.nav_settings) {
             fragment = new ParametreFragment();
         } else if (id == R.id.nav_legal) {
             fragment = new LegalFragment();
+        } else if (id == R.id.home){
+            fragment = new ListDemandFragment();
         }
 
         if (fragment != null) {

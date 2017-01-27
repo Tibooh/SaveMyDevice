@@ -6,7 +6,7 @@
     android:padding="16dp">
 
     <ImageView
-        android:id="@+id/icon"
+        android:id="@+id/iconDemande"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:padding="8dp"
@@ -18,8 +18,8 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/icon"
-        android:layout_toRightOf="@+id/icon"
+        android:layout_toEndOf="@+id/iconDemande"
+        android:layout_toRightOf="@+id/iconDemande"
         android:textSize="16sp"
         android:layout_centerVertical="true"
         android:text="laposte.net"
@@ -29,8 +29,8 @@
         android:id="@+id/subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/icon"
-        android:layout_toRightOf="@+id/icon"
+        android:layout_toEndOf="@+id/iconDemande"
+        android:layout_toRightOf="@+id/iconDemande"
         android:textSize="12sp"
         android:layout_centerVertical="true"
         android:text="stamper"
