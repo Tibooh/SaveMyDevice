@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "866318928094",
+    "firebase_url": "https://savemydevice-b2513.firebaseio.com",
+    "project_id": "savemydevice-b2513",
+    "storage_bucket": "savemydevice-b2513.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866318928094:android:3b49e2d772298109",
+        "android_client_info": {
+          "package_name": "com.eservices.tandrentreprise"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "866318928094-ekak52eitupp14v53s1mbgnjch80qv7s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr3S8w_MvgQqIkwU_mgMoayhyMW8QDHKM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866318928094:android:4aba1bcee34ae8f4",
+        "android_client_info": {
+          "package_name": "com.eservices.tandrentreprise.savemydevice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "866318928094-ekak52eitupp14v53s1mbgnjch80qv7s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr3S8w_MvgQqIkwU_mgMoayhyMW8QDHKM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
