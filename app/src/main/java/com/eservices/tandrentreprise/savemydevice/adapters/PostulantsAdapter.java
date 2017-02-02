@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.eservices.tandrentreprise.savemydevice.R;
@@ -32,8 +33,16 @@ public class PostulantsAdapter extends ArrayAdapter<Candidature> {
         TextView name = (TextView) content.findViewById(R.id.name);
         TextView tarif = (TextView) content.findViewById(R.id.tarif);
         ImageButton btnPostulant = (ImageButton)  content.findViewById(R.id.btnPostulant) ;
+        ImageView canMove = (ImageView) content.findViewById(R.id.iconcar) ;
 
         Candidature cur = getItem(position);
+
+        if (cur.peutBouger==true){
+            canMove.setVisibility(View.VISIBLE);
+        }else{
+            canMove.setVisibility(View.INVISIBLE);
+        }
+
         name.setText(cur.nomPostulant);
         tarif.setText("Tarif : "+cur.prixPropose);
         btnPostulant.setBackgroundResource(R.drawable.ic_validate);

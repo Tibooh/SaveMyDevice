@@ -10,6 +10,7 @@ public class Candidature {
     public boolean peutBouger;
 
 
+
     public Candidature(Integer idCandidature, String nomPostulant, Integer prixPropose, boolean peutBouger) {
         this.idCandidature = idCandidature;
         this.nomPostulant=nomPostulant;

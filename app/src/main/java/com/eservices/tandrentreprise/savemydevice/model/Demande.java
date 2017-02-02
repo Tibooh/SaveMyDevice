@@ -10,15 +10,17 @@ public class Demande implements Serializable {
 
     public Integer idDemande;
     public String title;
+    public String area;
     public String detail;
     public String type;
     public String modeleAppareil;
     public Integer idUser;
     public Integer idDepanneur;
 
-    public Demande(Integer idDemande, String title, String detail, String type, String modeleAppareil ,Integer idUser, Integer idDepanneur) {
+    public Demande(Integer idDemande,String title, String area, String detail, String type, String modeleAppareil ,Integer idUser, Integer idDepanneur) {
         this.idDemande = idDemande;
         this.title = title;
+        this.area = area;
         this.detail = detail;
         this.type = type;
         this.modeleAppareil = modeleAppareil;

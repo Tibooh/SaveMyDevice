@@ -4,13 +4,128 @@
     android:layout_height="match_parent">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Créer une demande"
-        android:id="@+id/textView"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/title_labelcreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/colorPrimary"
+                android:text="Titre"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/title"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/rounded_edittext"
+                android:textColorLink="@android:color/holo_blue_light"
+                android:layout_marginLeft="125dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/categorie_labelcreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Catégorie"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/type"
+                android:background="@drawable/rounded_edittext"
+                android:layout_gravity="center_horizontal"
+                android:textColorLink="@android:color/holo_blue_light"
+                android:layout_marginLeft="125dp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/modele_labelcreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Modèle"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/modele"
+                android:background="@drawable/rounded_edittext"
+                android:layout_gravity="center_horizontal"
+                android:textColorLink="@android:color/holo_blue_light"
+                android:layout_marginLeft="125dp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/detail_labelcreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Description"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/detail"
+                android:inputType="textMultiLine"
+                android:lines="8"
+                android:minLines="6"
+                android:layout_alignTop="@+id/detail_labelcreate"
+                android:layout_marginTop="40dp"
+                android:gravity="top|left"
+                android:maxLines="10"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:scrollbars="vertical"
+                android:background="@drawable/rounded_edittext"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            >
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Valider"
+                android:textColor="#FFFFFF"
+                android:id="@+id/button_add"
+                android:background="@drawable/rounded_button"
+                android:layout_centerHorizontal="true"
+                android:textAllCaps="false"
+                android:layout_marginTop="42dp"
+                android:textSize="20dp"
+
+                android:onClick="addPlant"/>
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </FrameLayout>
