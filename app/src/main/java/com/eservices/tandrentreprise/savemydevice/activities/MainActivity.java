@@ -1,6 +1,8 @@
 package com.eservices.tandrentreprise.savemydevice.activities;
 
 import com.eservices.tandrentreprise.savemydevice.R;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.eservices.tandrentreprise.savemydevice.fragments.CreateDemandFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.ListDemandFragment;
@@ -23,6 +26,7 @@ import com.eservices.tandrentreprise.savemydevice.fragments.MyDemandFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.LegalFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.MessagesFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.ParametreFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**Activity principale de l'application*/
 public class MainActivity extends AppCompatActivity
@@ -130,10 +134,31 @@ public class MainActivity extends AppCompatActivity
             fragment = new ParametreFragment();
         } else if (id == R.id.nav_legal) {
             fragment = new LegalFragment();
+<<<<<<< HEAD
         } else if (id == R.id.home){
             fragment = new ListDemandFragment();
+=======
+        } else if (id == R.id.nav_connect){
+            Intent i = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(i);
+            finish();
+        } else if (id == R.id.nav_create_account){
+            Intent i = new Intent(MainActivity.this, SignupActivity.class);
+            startActivity(i);
+            finish();
+            (() R.id.nav_connect);
+        } else if (id == R.id.nav_deconnect){
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            if (auth.getCurrentUser() != null) {
+                Toast.makeText(MainActivity.this, "A bientot :" + auth.getCurrentUser().getEmail(),
+                        Toast.LENGTH_SHORT).show();
+                auth.signOut();
+            }
+            Intent i = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
+>>>>>>> d1bdca9b57d2fe8c52fc58fc6b3da5969df80a9e
         }
-
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);
