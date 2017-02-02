@@ -134,10 +134,8 @@ public class MainActivity extends AppCompatActivity
             fragment = new ParametreFragment();
         } else if (id == R.id.nav_legal) {
             fragment = new LegalFragment();
-<<<<<<< HEAD
         } else if (id == R.id.home){
             fragment = new ListDemandFragment();
-=======
         } else if (id == R.id.nav_connect){
             Intent i = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(i);
@@ -146,7 +144,6 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(MainActivity.this, SignupActivity.class);
             startActivity(i);
             finish();
-            (() R.id.nav_connect);
         } else if (id == R.id.nav_deconnect){
             FirebaseAuth auth = FirebaseAuth.getInstance();
             if (auth.getCurrentUser() != null) {
@@ -157,7 +154,6 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(MainActivity.this, MainActivity.class);
             startActivity(i);
             finish();
->>>>>>> d1bdca9b57d2fe8c52fc58fc6b3da5969df80a9e
         }
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
