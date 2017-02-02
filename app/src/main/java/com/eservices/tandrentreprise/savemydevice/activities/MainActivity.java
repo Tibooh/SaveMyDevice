@@ -22,10 +22,12 @@ import android.widget.Toast;
 
 import com.eservices.tandrentreprise.savemydevice.fragments.CreateDemandFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.ListDemandFragment;
+import com.eservices.tandrentreprise.savemydevice.fragments.LoginFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.MyDemandFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.LegalFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.MessagesFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.ParametreFragment;
+import com.eservices.tandrentreprise.savemydevice.fragments.SignupFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**Activity principale de l'application*/
@@ -137,13 +139,15 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.home){
             fragment = new ListDemandFragment();
         } else if (id == R.id.nav_connect){
-            Intent i = new Intent(MainActivity.this, LoginActivity.class);
+            fragment=new LoginFragment();
+            /*Intent i = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(i);
-            finish();
+            finish();*/
         } else if (id == R.id.nav_create_account){
-            Intent i = new Intent(MainActivity.this, SignupActivity.class);
+            fragment=new SignupFragment();
+            /*Intent i = new Intent(MainActivity.this, SignupActivity.class);
             startActivity(i);
-            finish();
+            finish();*/
         } else if (id == R.id.nav_deconnect){
             FirebaseAuth auth = FirebaseAuth.getInstance();
             if (auth.getCurrentUser() != null) {
