@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +16,6 @@ import android.widget.Toast;
 
 import com.eservices.tandrentreprise.savemydevice.R;
 import com.eservices.tandrentreprise.savemydevice.activities.MainActivity;
-import com.eservices.tandrentreprise.savemydevice.activities.ResetPasswordActivity;
-import com.eservices.tandrentreprise.savemydevice.activities.SignupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -45,19 +44,14 @@ public class SignupFragment extends Fragment {
         progressBar = (ProgressBar) v.findViewById(R.id.progressBar);
         btnResetPassword = (Button) v.findViewById(R.id.btn_reset_password);
 
-        btnResetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //gestion de réinitiatlisation de mot de passe
-                //startActivity(new Intent(getActivity(), ResetPasswordActivity.class));
-            }
-        });
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = null;
-                fragment=new LoginFragment();
+            Fragment fragment=new LoginFragment();;
+            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.commit();
             }
         });
 

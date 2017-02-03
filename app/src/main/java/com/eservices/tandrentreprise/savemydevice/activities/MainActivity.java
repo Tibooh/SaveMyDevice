@@ -54,9 +54,6 @@ public class MainActivity extends AppCompatActivity
 
         setSupportActionBar(toolbar);
 
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         //3.9
@@ -140,14 +137,9 @@ public class MainActivity extends AppCompatActivity
             fragment = new ListDemandFragment();
         } else if (id == R.id.nav_connect){
             fragment=new LoginFragment();
-            /*Intent i = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(i);
-            finish();*/
         } else if (id == R.id.nav_create_account){
             fragment=new SignupFragment();
-            /*Intent i = new Intent(MainActivity.this, SignupActivity.class);
-            startActivity(i);
-            finish();*/
+
         } else if (id == R.id.nav_deconnect){
             FirebaseAuth auth = FirebaseAuth.getInstance();
             if (auth.getCurrentUser() != null) {
@@ -159,6 +151,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(i);
             finish();
         }
+
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);

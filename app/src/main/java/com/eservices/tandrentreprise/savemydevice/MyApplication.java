@@ -1,6 +1,9 @@
 package com.eservices.tandrentreprise.savemydevice;
 
 import android.app.Application;
+import android.graphics.Typeface;
+import android.util.Log;
+import android.widget.TextView;
 
 import com.eservices.tandrentreprise.savemydevice.model.Area;
 import com.eservices.tandrentreprise.savemydevice.model.Candidature;
@@ -43,4 +46,7 @@ public class MyApplication extends Application {
         postulants.add(new Candidature(3,"Jacquie", 12, false));
 
     }
+
+
+
 }
