@@ -30,8 +30,7 @@ public class LoginFragment extends Fragment {
     private FirebaseAuth auth;
     //private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset;
-    private TextView pseudo,commentaire;
-    private ImageView photoProfile;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO : Affichage du fragment (1.1)
@@ -49,6 +48,7 @@ public class LoginFragment extends Fragment {
             Intent i = new Intent(getActivity(), MainActivity.class);
             startActivity(i);
         }
+
         inputEmail = (EditText) v.findViewById(R.id.email);
         inputPassword = (EditText) v.findViewById(R.id.password);
         //progressBar = (ProgressBar) v.findViewById(R.id.progressBar);
@@ -64,10 +64,10 @@ public class LoginFragment extends Fragment {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Fragment fragment=new SignupFragment();;
-            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
-            ft.commit();
+                Fragment fragment = new SignupFragment();
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.content_frame, fragment);
+                ft.commit();
             }
         });
 
@@ -75,6 +75,10 @@ public class LoginFragment extends Fragment {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Fragment fragment = new resetPasswordFragment();
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.content_frame, fragment);
+                ft.commit();
             }
         });
 

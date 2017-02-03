@@ -19,7 +19,6 @@ public class MyApplication extends Application {
     public List<Demande> myDemands;
     public List<Candidature> postulants;
 
-
     boolean isConnect;
 
     @Override

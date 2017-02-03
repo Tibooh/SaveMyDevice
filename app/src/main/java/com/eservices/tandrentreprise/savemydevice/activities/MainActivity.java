@@ -34,19 +34,22 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private FirebaseAuth auth;
+    NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_home_black_24dp);
 
         Fragment fragment = new ListDemandFragment();;
-        if (fragment != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
-            ft.commit();
-        }
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, fragment);
+        ft.commit();
+
 
         // 3.9
         final CoordinatorLayout mainLayout = (CoordinatorLayout) findViewById(R.id.main_layout);
@@ -72,8 +75,11 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-
         navigationView.setNavigationItemSelectedListener(this);
+
+        auth = FirebaseAuth.getInstance();
+        hideItem();
+
     }
 
     @Override
@@ -158,8 +164,40 @@ public class MainActivity extends AppCompatActivity
             ft.commit();
         }
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    private void hideItem()
+    {
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        Menu nav_Menu = navigationView.getMenu();
+        nav_Menu.findItem(R.id.nav_settings).setVisible(false);
+        if (auth.getCurrentUser() != null) {
+            //icone connecté
+            nav_Menu.findItem(R.id.nav_demand).setVisible(true);
+            nav_Menu.findItem(R.id.nav_message).setVisible(true);
+            nav_Menu.findItem(R.id.nav_add).setVisible(true);
+            nav_Menu.findItem(R.id.nav_settings).setVisible(true);
+            nav_Menu.findItem(R.id.nav_demand).setVisible(true);
+            nav_Menu.findItem(R.id.nav_deconnect).setVisible(true);
+            //icone non connecté
+            nav_Menu.findItem(R.id.nav_connect).setVisible(false);
+            nav_Menu.findItem(R.id.nav_create_account).setVisible(false);
+        }else{
+            nav_Menu.findItem(R.id.nav_demand).setVisible(false);
+            nav_Menu.findItem(R.id.nav_message).setVisible(false);
+            nav_Menu.findItem(R.id.nav_add).setVisible(false);
+            nav_Menu.findItem(R.id.nav_settings).setVisible(false);
+            nav_Menu.findItem(R.id.nav_demand).setVisible(false);
+            nav_Menu.findItem(R.id.nav_deconnect).setVisible(false);
+            //icone non connecté
+            nav_Menu.findItem(R.id.nav_connect).setVisible(true);
+            nav_Menu.findItem(R.id.nav_create_account).setVisible(true);
+
+        }
     }
 }

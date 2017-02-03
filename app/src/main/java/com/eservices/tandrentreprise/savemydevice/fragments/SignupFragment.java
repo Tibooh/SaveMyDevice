@@ -29,7 +29,7 @@ public class SignupFragment extends Fragment {
 
     private EditText inputEmail, inputPassword;
     private Button btnSignIn, btnSignUp, btnResetPassword;
-    private ProgressBar progressBar;
+    //private ProgressBar progressBar;
     private FirebaseAuth auth;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class SignupFragment extends Fragment {
         btnSignUp = (Button) v.findViewById(R.id.sign_up_button);
         inputEmail = (EditText) v.findViewById(R.id.email);
         inputPassword = (EditText) v.findViewById(R.id.password);
-        progressBar = (ProgressBar) v.findViewById(R.id.progressBar);
+        //progressBar = (ProgressBar) v.findViewById(R.id.progressBar);
         btnResetPassword = (Button) v.findViewById(R.id.btn_reset_password);
 
 
@@ -77,14 +77,14 @@ public class SignupFragment extends Fragment {
                     return;
                 }
 
-                progressBar.setVisibility(View.VISIBLE);
+                //progressBar.setVisibility(View.VISIBLE);
                 //create user
                 auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 Toast.makeText(getActivity(), "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
+                                //progressBar.setVisibility(View.GONE);
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.

@@ -32,7 +32,7 @@ public class CreateDemandFragment extends Fragment {
         }
 
 
-    public void addPlant(View v) {
+    public void addDemande(View v) {
         Context context = getActivity().getApplicationContext(); //Context courant
         title = (EditText) v.findViewById(R.id.title); //Champs nom
         detail = (EditText) v.findViewById(R.id.detail); //Champs lieu

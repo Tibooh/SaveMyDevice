@@ -13,10 +13,12 @@ import android.widget.ListView;
 import com.eservices.tandrentreprise.savemydevice.MyApplication;
 import com.eservices.tandrentreprise.savemydevice.R;
 import com.eservices.tandrentreprise.savemydevice.adapters.DemandsAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**Fragment de la liste des demandes*/
 public class ListDemandFragment extends Fragment {
 
+    private FirebaseAuth auth;
 
 
     @Override
@@ -53,6 +55,14 @@ public class ListDemandFragment extends Fragment {
                 }
             }
         });
+
+        //Cacher le bouton d'ajout si non connecté
+        auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null) {
+            v.findViewById(R.id.fab).setVisibility(View.VISIBLE);
+        }else{
+            v.findViewById(R.id.fab).setVisibility(View.INVISIBLE);
+        }
 
         return v;
     }
