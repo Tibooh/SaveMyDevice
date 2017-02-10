@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="modele_array">
+        <item>Ordinateur</item>
+        <item>Tablette</item>
+        <item>Smartphone</item>
+        <item>Imprimante</item>
+        <item>Décodeur TV</item>
+    </string-array>
+
+    <string-array name="type_array">
+        <item>Hardware</item>
+        <item>Software</item>
+        <item>Je ne sais pas</item>
+    </string-array>
+</resources>
