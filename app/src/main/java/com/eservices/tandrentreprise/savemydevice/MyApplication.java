@@ -31,12 +31,12 @@ public class MyApplication extends Application {
 
         isConnect = false;
 
-        demands.add(new Demande(1,"Problème ordinateur", Area.HDF, "Orinateur ne démarre plus", "Hardware","Ordinateur Dell XY", 1, 1));
-        demands.add(new Demande(2,"Problème PC", Area.BFC,"Il ne démarre plus", "Hardware", "Asus rogue one",2, -1));
-        demands.add(new Demande(4,"Problème fichier word", Area.HDF,  "Il s'ouvre pas",  "Software", "MacBook Pro", 4, -1));
-        demands.add(new Demande(5,"Problème internet", Area.OCC, "Impossible d'acceder à internet", "Software","MacBook air 2", 5, -1));
-        demands.add(new Demande(3,"Problème tablette", Area.PDL,  "Elle s'éteinds toute seule",  "Hardware", "Ipad 2",3, -1));
-        demands.add(new Demande(6,"Lenteur internet", Area.GE,  "Navigateur plein de pub",  "Software", "Lenovo yoga", 6, -1));
+        demands.add(new Demande("Problème ordinateur", Area.HDF, "Orinateur ne démarre plus", "Hardware","Ordinateur Dell XY", "3EDEDE"));
+        demands.add(new Demande("Problème PC", Area.BFC,"Il ne démarre plus", "Hardware", "Asus rogue one","3ED"));
+        demands.add(new Demande("Problème fichier word", Area.HDF,  "Il s'ouvre pas",  "Software", "MacBook Pro", "ZSs2"));
+        demands.add(new Demande("Problème internet", Area.OCC, "Impossible d'acceder à internet", "Software","MacBook air 2", "SDD3"));
+        demands.add(new Demande("Problème tablette", Area.PDL,  "Elle s'éteinds toute seule",  "Hardware", "Ipad 2","DD323"));
+        demands.add(new Demande("Lenteur internet", Area.GE,  "Navigateur plein de pub",  "Software", "Lenovo yoga", "DDE233"));
 
         myDemands.add(demands.get(0));
 
