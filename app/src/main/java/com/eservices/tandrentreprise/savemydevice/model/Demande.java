@@ -18,6 +18,8 @@ public class Demande implements Serializable {
     public String idUser;
     public Integer idDepanneur;
 
+    public Demande(){}
+
     public Demande(String title, String area, String detail, String type, String modeleAppareil ,String idUser) {
         this.title = title;
         this.area = area;

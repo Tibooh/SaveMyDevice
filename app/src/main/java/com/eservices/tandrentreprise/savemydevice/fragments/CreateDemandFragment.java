@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,17 @@ import com.eservices.tandrentreprise.savemydevice.MyApplication;
 import com.eservices.tandrentreprise.savemydevice.R;
 import com.eservices.tandrentreprise.savemydevice.model.Area;
 import com.eservices.tandrentreprise.savemydevice.model.Demande;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**Fragment de la messagerie de l'applciation*/
@@ -29,6 +41,9 @@ public class CreateDemandFragment extends Fragment {
         private Spinner type;
         Button validate;
         Button btnBack;
+
+        private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        private String userId= FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -64,9 +79,10 @@ public class CreateDemandFragment extends Fragment {
             validate.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     //Insertion dans la base de données
-                    Demande d = new Demande(99,title.getText().toString(), Area.HDF, detail.getText().toString(), type.getSelectedItem().toString(), modele.getSelectedItem().toString(), 1, -1);
-                    ((MyApplication) getActivity().getApplication()).demands.add(d);
+                     Demande demande = new Demande(title.getText().toString(), Area.HDF, detail.getText().toString(), type.getSelectedItem().toString(), modele.getSelectedItem().toString(),"dfdf");
+//                    ((MyApplication) getActivity().getApplication()).demands.add(d);
 
+                    addDemande(demande);
                     Toast.makeText(getActivity(), "La demande a été créé et ajouté à vos demande", Toast.LENGTH_SHORT).show();
 
                     Fragment fragment = new MyDemandFragment();
@@ -93,8 +109,18 @@ public class CreateDemandFragment extends Fragment {
 
     @Override
         public void onViewCreated(View view, Bundle savedInstanceState) {
-            super.onViewCreated(view, savedInstanceState);
-            // Vous pouvez changer le titre dans la toolbar de vos differents fragments
-            getActivity().setTitle("Créer une demande");
-        }
+        super.onViewCreated(view, savedInstanceState);
+        // Vous pouvez changer le titre dans la toolbar de vos differents fragments
+        getActivity().setTitle("Créer une demande");
+    }
+
+    public void  addDemande(Demande demande){
+        //Insertion dans la base de données
+        DatabaseReference ref = database.getReference("demandes");
+        String idDemande = userId + ';' + demande.getTitle();
+        Map<String, Demande> demandes = new HashMap<String, Demande>();
+        demandes.put(idDemande,demande);
+
+        ref.setValue(demandes);
+    }
 }

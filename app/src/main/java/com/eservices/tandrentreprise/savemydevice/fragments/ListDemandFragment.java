@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,16 @@ import android.widget.ListView;
 import com.eservices.tandrentreprise.savemydevice.MyApplication;
 import com.eservices.tandrentreprise.savemydevice.R;
 import com.eservices.tandrentreprise.savemydevice.adapters.DemandsAdapter;
+import com.eservices.tandrentreprise.savemydevice.model.Demande;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**Fragment de la liste des demandes*/
 public class ListDemandFragment extends Fragment {
@@ -26,6 +36,8 @@ public class ListDemandFragment extends Fragment {
         // TODO : Affichage du fragment (1.1)
         View v = inflater.inflate(R.layout.fragment_demand_list, null);
         ListView list = (ListView) v.findViewById(R.id.list_item);
+        //((MyApplication) getActivity().getApplication()).getAllDemandes();
+        ((MyApplication) getActivity().getApplication()).getAllDemandes();
         list.setAdapter(new DemandsAdapter(getContext(), ((MyApplication) getActivity().getApplication()).demands));
 
         // TODO : Gestion du clique sur l'item (2.1)
@@ -73,5 +85,6 @@ public class ListDemandFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("");
     }
+
 }
 
