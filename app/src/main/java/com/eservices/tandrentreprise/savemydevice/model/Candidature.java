@@ -1,6 +1,7 @@
 package com.eservices.tandrentreprise.savemydevice.model;
 
 /**
+ * Modele de donnée candidature
  * Created by tibo000 on 27/01/2017.
  */
 public class Candidature {

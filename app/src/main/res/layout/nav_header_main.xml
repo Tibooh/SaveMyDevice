@@ -13,23 +13,21 @@
 
     <ImageView
         android:id="@+id/photo_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:src="@drawable/logogo" />
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:paddingTop="@dimen/nav_header_vertical_spacing" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Tibooh"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:id="@+id/pseudo" />
 
     <TextView
-        android:id="@+id/commentaire"
+        android:id="@+id/ageVille"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lille - 23 ans" />
+        />
 
 </LinearLayout>

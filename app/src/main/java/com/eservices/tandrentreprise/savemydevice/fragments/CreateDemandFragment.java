@@ -64,7 +64,7 @@ public class CreateDemandFragment extends Fragment {
             validate.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     //Insertion dans la base de données
-                    Demande d = new Demande(99,title.getText().toString(), Area.HDF, detail.getText().toString(), type.getSelectedItem().toString(), modele.getSelectedItem().toString(), 1, -1);
+                    Demande d = new Demande(title.getText().toString(), Area.HDF, detail.getText().toString(), type.getSelectedItem().toString(), modele.getSelectedItem().toString(), "1");
                     ((MyApplication) getActivity().getApplication()).demands.add(d);
 
                     Toast.makeText(getActivity(), "La demande a été créé et ajouté à vos demande", Toast.LENGTH_SHORT).show();
