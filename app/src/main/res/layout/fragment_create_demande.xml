@@ -14,7 +14,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
             <TextView
                 android:id="@+id/title_labelcreate"
@@ -37,7 +37,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
             <TextView
                 android:id="@+id/categorie_labelcreate"
@@ -64,7 +64,7 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
             <TextView
                 android:id="@+id/modele_labelcreate"
@@ -89,7 +89,7 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
             <TextView
                 android:id="@+id/detail_labelcreate"
@@ -117,7 +117,7 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:layout_marginTop="42dp"
             android:layout_marginLeft="20dp"

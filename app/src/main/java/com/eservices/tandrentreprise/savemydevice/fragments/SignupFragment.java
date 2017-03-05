@@ -16,10 +16,18 @@ import android.widget.Toast;
 
 import com.eservices.tandrentreprise.savemydevice.R;
 import com.eservices.tandrentreprise.savemydevice.activities.MainActivity;
+import com.eservices.tandrentreprise.savemydevice.model.Area;
+import com.eservices.tandrentreprise.savemydevice.model.Demande;
+import com.eservices.tandrentreprise.savemydevice.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by camrad on 02/02/2017.
@@ -34,6 +42,7 @@ public class SignupFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_signup, null);
+
 
         auth = FirebaseAuth.getInstance();
 
@@ -92,6 +101,17 @@ public class SignupFragment extends Fragment {
                                     Toast.makeText(getActivity(), "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
+                                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                                    //Insertion dans la base de new user
+                                    DatabaseReference ref = database.getReference("users");
+
+                                    User connectedUser = new User( auth.getCurrentUser().getUid(),  auth.getCurrentUser().getProviderId(), "", "", "", "", 0, "", "", "", 0, 0, 0);
+
+                                    String idUser = auth.getCurrentUser().getUid();
+
+                                    ref.child(idUser).setValue(connectedUser);
+
                                     Intent intent = new Intent(getActivity(), MainActivity.class);
                                     getActivity().startActivity(intent);
                                 }

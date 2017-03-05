@@ -72,7 +72,7 @@ public class MyApplication extends Application {
          public String mail;
          */
 
-        connectedUser = new User("Tibooh", "Pernet", "Thibaut", Area.HDF, 23, auth.getCurrentUser().getEmail());
+        connectedUser = new User("", "" ,"Tibooh", "Pernet", "Thibaut", Area.HDF, 23, "28 rue de Lille", "59000" ,"LILLE", 5, 8, 385);
 
     }
 

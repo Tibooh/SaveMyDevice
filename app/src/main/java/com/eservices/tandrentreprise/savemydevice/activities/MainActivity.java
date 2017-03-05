@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -31,6 +32,7 @@ import com.eservices.tandrentreprise.savemydevice.fragments.MyDemandFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.LegalFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.MessagesFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.ParametreFragment;
+import com.eservices.tandrentreprise.savemydevice.fragments.ProfilFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.SignupFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         app = (MyApplication) getApplication();
+        app.getAllDemandes();
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -59,6 +62,7 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content_frame, fragment);
         ft.commit();
+
 
 
         // 3.9
@@ -206,8 +210,12 @@ public class MainActivity extends AppCompatActivity
 
             img.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    // your code here
-                }
+                    Fragment fragment = new ProfilFragment();
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.content_frame, fragment);
+                    ft.commit();
+                    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                    drawer.closeDrawer(GravityCompat.START);}
             });
 
 

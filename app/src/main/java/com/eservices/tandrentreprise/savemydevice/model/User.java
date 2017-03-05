@@ -5,31 +5,56 @@ package com.eservices.tandrentreprise.savemydevice.model;
  * Created by tibo000 on 03/03/2017.
  */
 public class User {
+
+    public String uIdUser;
+    public String providerIdUser;
+
     public String pseudo;
     public String nom;
     public String prenom;
     public String region;
     public int age;
-    public String mail;
+    public String adresse;
+    public String codePostal;
+    public String ville;
+    public int nbIntervention;
+    public int nbAnnonces;
+    public int gainTotal;
+
 
     public User(){
     }
 
-    public User(String pseudo, String nom, String prenom, String region, int age, String mail) {
+    public User(String uIdUser, String providerIdUser, String pseudo, String nom, String prenom, String region, int age, String adresse, String codePostal, String ville, int nbIntervention, int nbAnnonces, int gainTotal) {
+        this.uIdUser = uIdUser;
+        this.providerIdUser = providerIdUser;
         this.pseudo = pseudo;
         this.nom = nom;
         this.prenom = prenom;
         this.region = region;
         this.age = age;
-        this.mail = mail;
+        this.adresse = adresse;
+        this.codePostal = codePostal;
+        this.ville = ville;
+        this.nbIntervention = nbIntervention;
+        this.nbAnnonces = nbAnnonces;
+        this.gainTotal = gainTotal;
     }
 
-    public String getNom() {
-        return nom;
+    public String getuIdUser() {
+        return uIdUser;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setuIdUser(String uIdUser) {
+        this.uIdUser = uIdUser;
+    }
+
+    public String getProviderIdUser() {
+        return providerIdUser;
+    }
+
+    public void setProviderIdUser(String providerIdUser) {
+        this.providerIdUser = providerIdUser;
     }
 
     public String getPseudo() {
@@ -38,6 +63,14 @@ public class User {
 
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getPrenom() {
@@ -64,11 +97,51 @@ public class User {
         this.age = age;
     }
 
-    public String getMail() {
-        return mail;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getCodePostal() {
+        return codePostal;
+    }
+
+    public void setCodePostal(String codePostal) {
+        this.codePostal = codePostal;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public int getNbIntervention() {
+        return nbIntervention;
+    }
+
+    public void setNbIntervention(int nbIntervention) {
+        this.nbIntervention = nbIntervention;
+    }
+
+    public int getNbAnnonces() {
+        return nbAnnonces;
+    }
+
+    public void setNbAnnonces(int nbAnnonces) {
+        this.nbAnnonces = nbAnnonces;
+    }
+
+    public int getGainTotal() {
+        return gainTotal;
+    }
+
+    public void setGainTotal(int gainTotal) {
+        this.gainTotal = gainTotal;
     }
 }

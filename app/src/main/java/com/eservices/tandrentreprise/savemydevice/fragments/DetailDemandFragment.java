@@ -33,6 +33,7 @@ public class DetailDemandFragment extends Fragment {
     @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_detail_demande, container, false);
+
         // TODO : Affichage des infos (3.1)
 
         ListView list = (ListView) v.findViewById(R.id.list_postulant);

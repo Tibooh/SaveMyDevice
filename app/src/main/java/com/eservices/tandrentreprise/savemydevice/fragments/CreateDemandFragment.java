@@ -47,6 +47,8 @@ public class CreateDemandFragment extends Fragment {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
             // Retourne votre fichier layout
             // Changer R.layout.yourlayoutfilename pour vos fragments
             View v = inflater.inflate(R.layout.fragment_create_demande, container, false);

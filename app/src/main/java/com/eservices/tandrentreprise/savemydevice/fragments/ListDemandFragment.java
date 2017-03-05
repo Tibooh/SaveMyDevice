@@ -36,8 +36,10 @@ public class ListDemandFragment extends Fragment {
         // TODO : Affichage du fragment (1.1)
         View v = inflater.inflate(R.layout.fragment_demand_list, null);
         ListView list = (ListView) v.findViewById(R.id.list_item);
-        //((MyApplication) getActivity().getApplication()).getAllDemandes();
+/*
         ((MyApplication) getActivity().getApplication()).getAllDemandes();
+*/
+
         list.setAdapter(new DemandsAdapter(getContext(), ((MyApplication) getActivity().getApplication()).demands));
 
         // TODO : Gestion du clique sur l'item (2.1)
@@ -83,7 +85,7 @@ public class ListDemandFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("");
+        getActivity().setTitle("Accueil");
     }
 
 }
