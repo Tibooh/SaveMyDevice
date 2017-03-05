@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.eservices.tandrentreprise.savemydevice.MyApplication;
 import com.eservices.tandrentreprise.savemydevice.R;
 import com.eservices.tandrentreprise.savemydevice.model.Area;
+import com.eservices.tandrentreprise.savemydevice.model.Candidature;
 import com.eservices.tandrentreprise.savemydevice.model.Demande;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -77,23 +78,28 @@ public class CreateDemandFragment extends Fragment {
             validate = (Button) v.findViewById(R.id.button_add);
             btnBack = (Button) v.findViewById(R.id.btn_cancel);
 
+            final List<Candidature> candidatures=new ArrayList<Candidature>();
+            candidatures.add(new Candidature(1,"Radhi",15,true));
+            candidatures.add(new Candidature(2,"Thibaut",90,true));
+
             //Button valider
             validate.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     //Insertion dans la base de données
-
-                     Demande demande = new Demande(title.getText().toString(), Area.HDF, detail.getText().toString(), type.getSelectedItem().toString(), modele.getSelectedItem().toString(),"dfdf");
+                    if ((title.getText().toString()!=null)&&(detail.getText().toString() != null)) {
+                        Demande demande = new Demande(title.getText().toString(), Area.HDF, detail.getText().toString(), type.getSelectedItem().toString(), modele.getSelectedItem().toString(), "dfdf");
 //                    ((MyApplication) getActivity().getApplication()).demands.add(d);
-
-
-                    addDemande(demande);
-                    Toast.makeText(getActivity(), "La demande a été créé et ajouté à vos demande", Toast.LENGTH_SHORT).show();
-
-                    Fragment fragment = new MyDemandFragment();
-                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.content_frame, fragment);
-                    ft.commit();
-
+                        demande.setCandidatures(candidatures);
+                        addDemande(demande);
+                        Toast.makeText(getActivity(), "La demande a été créé et ajouté à vos demande", Toast.LENGTH_SHORT).show();
+                        Fragment fragment = new MyDemandFragment();
+                        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                        ft.replace(R.id.content_frame, fragment);
+                        ft.commit();
+                    }
+                    else {
+                        Toast.makeText(getActivity(), "Veuillez renseigner tous les champs.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
 
