@@ -63,15 +63,6 @@ public class MyApplication extends Application {
     public void getConnectedUser(){
         auth = FirebaseAuth.getInstance();
 
-        /**TODO recuperation des infos dans la table user en fonction du login connecté
-         *  public String pseudo;
-         public String nom;
-         public String prenom;
-         public Area region;
-         public int age;
-         public String mail;
-         */
-
         connectedUser = new User("", "" ,"Tibooh", "Pernet", "Thibaut", Area.HDF, 23, "28 rue de Lille", "59000" ,"LILLE", 5, 8, 385);
 
     }

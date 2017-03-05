@@ -28,25 +28,24 @@
                 android:id="@+id/header_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="6dp"
+                android:layout_margin="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_toRightOf="@+id/img">
+
                 <TextView
                     android:id="@+id/profil_account"
-                    android:layout_margin="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="#000000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mon Compte"/>
                 <ImageView
                     android:id="@+id/account_update"
-                    android:layout_margin="3dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_modif"
-                    android:layout_toRightOf="@+id/profil_account"/>
+                    android:layout_toRightOf="@+id/profil_account"
+                    android:layout_toEndOf="@+id/profil_account"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -54,9 +53,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/img"
+                android:layout_marginBottom="6dp"
                 android:layout_below="@+id/header_title"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true">
+                >
 
                 <TextView
                     android:id="@+id/label_gain"
@@ -67,13 +66,22 @@
 
                 <TextView
                     android:id="@+id/tv_gain"
-                    android:layout_below="@id/label_gain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textColor="@android:color/black"
                     android:text="50"
-                    android:layout_toRightOf="@+id/label_gain"/>
+                    android:layout_toRightOf="@+id/label_gain"
+                    android:layout_toEndOf="@+id/label_gain"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/holo_green_light"
+                    android:text="€"
+                    android:layout_toRightOf="@+id/tv_gain"
+                    android:layout_toEndOf="@+id/tv_gain"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -81,6 +89,7 @@
                 android:layout_below="@id/header_gain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
                 android:layout_toRightOf="@+id/img">
 
                 <TextView
@@ -92,13 +101,13 @@
 
                 <TextView
                     android:id="@+id/tv_intervention"
-                    android:layout_below="@id/label_intervention"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textColor="@android:color/black"
                     android:text="15"
-                    android:layout_toRightOf="@+id/label_intervention"/>
+                    android:layout_toRightOf="@+id/label_intervention"
+                    android:layout_toEndOf="@+id/label_intervention"/>
 
             </RelativeLayout>
 
@@ -106,6 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/header_intervention"
+                android:layout_marginBottom="6dp"
                 android:layout_toRightOf="@+id/img">
 
                 <TextView
@@ -117,30 +127,42 @@
 
                 <TextView
                     android:id="@+id/tv_annonce"
-                    android:layout_below="@id/label_annonce"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textColor="@android:color/black"
                     android:text="12"
-                    android:layout_toRightOf="@+id/label_annonce"/>
+                    android:layout_toRightOf="@+id/label_annonce"
+                    android:layout_toEndOf="@+id/label_annonce"
+                    />
 
             </RelativeLayout>
-
         </RelativeLayout>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp">
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+            <TextView
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mes informations"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/label_pseudo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:text="Pseudo"/>
+                android:text="Pseudo : "/>
 
             <TextView
                 android:id="@+id/tv_pseudo"
@@ -154,16 +176,14 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/label_nom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:text="Nom"/>
+                android:text="Nom : "/>
 
             <TextView
                 android:id="@+id/tv_nom"
@@ -177,17 +197,14 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/label_prenom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:textSize="12sp"
-                android:text="Prénom"/>
+                android:text="Prénom : "/>
 
             <TextView
                 android:id="@+id/tv_prenom"
@@ -201,21 +218,105 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/label_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:textSize="12sp"
-                android:text="Âge"/>
+                android:text="Âge : "/>
 
             <TextView
                 android:id="@+id/tv_age"
                 android:layout_below="@id/label_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/label_adresse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Adresse : "/>
+
+            <TextView
+                android:id="@+id/tv_adresse"
+                android:layout_below="@id/label_adresse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/label_codePostal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textSize="12sp"
+                android:text="Code postal : "/>
+
+            <TextView
+                android:id="@+id/tv_codePostal"
+                android:layout_below="@id/label_codePostal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/label_ville"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textSize="12sp"
+                android:text="Ville : "/>
+
+            <TextView
+                android:id="@+id/tv_ville"
+                android:layout_below="@id/label_ville"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/label_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textSize="12sp"
+                android:text="Region : "/>
+
+            <TextView
+                android:id="@+id/tv_area"
+                android:layout_below="@id/label_area"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"

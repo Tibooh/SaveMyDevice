@@ -102,13 +102,12 @@ public class SignupFragment extends Fragment {
                                             Toast.LENGTH_SHORT).show();
                                 } else {
                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
-
                                     //Insertion dans la base de new user
                                     DatabaseReference ref = database.getReference("users");
 
-                                    User connectedUser = new User( auth.getCurrentUser().getUid(),  auth.getCurrentUser().getProviderId(), "", "", "", "", 0, "", "", "", 0, 0, 0);
+                                    User connectedUser = new User( "",  "", "", "", "", "", 0, "", "", "", 0, 0, 0);
 
-                                    String idUser = auth.getCurrentUser().getUid();
+                                    String idUser = ref.push().getKey();
 
                                     ref.child(idUser).setValue(connectedUser);
 

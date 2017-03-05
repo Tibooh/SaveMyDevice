@@ -121,10 +121,12 @@ public class CreateDemandFragment extends Fragment {
     public void  addDemande(Demande demande){
         //Insertion dans la base de données
         DatabaseReference ref = database.getReference("demandes");
-        String idDemande = userId + ';' + demande.getTitle();
-        Map<String, Demande> demandes = new HashMap<String, Demande>();
-        demandes.put(idDemande,demande);
+        String idDemande = ref.push().getKey();
+        ref.child(idDemande).setValue(demande);
 
-        ref.setValue(demandes);
+        //Map<String, Demande> demandes = new HashMap<String, Demande>();
+        //demandes.put(idDemande,demande);
+
+        //ref.setValue(demandes);
     }
 }
