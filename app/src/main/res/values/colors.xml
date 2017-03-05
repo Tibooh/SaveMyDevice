@@ -5,7 +5,7 @@
     <color name="colorAccent">#244f5a</color>
 
     <color name="colorBlanc">#F0FFFF</color>
-
+    <color name="greenLogo">#7FC768</color>
 
     <color name="bg_login">#26ae90</color>
     <color name="bg_register">#2e3237</color>

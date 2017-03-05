@@ -35,7 +35,8 @@
                 <TextView
                     android:id="@+id/profil_account"
                     android:textSize="20sp"
-                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mon Compte"/>
@@ -146,8 +147,9 @@
             android:paddingTop="16dp"
             android:paddingBottom="16dp">
             <TextView
-                android:textSize="18sp"
-                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mes informations"/>
@@ -155,7 +157,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp">
 
             <TextView
                 android:id="@+id/label_pseudo"
@@ -166,17 +169,19 @@
 
             <TextView
                 android:id="@+id/tv_pseudo"
-                android:layout_below="@id/label_pseudo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/label_pseudo"
+                android:layout_toEndOf="@+id/label_pseudo"/>
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp">
 
             <TextView
                 android:id="@+id/label_nom"
@@ -187,17 +192,19 @@
 
             <TextView
                 android:id="@+id/tv_nom"
-                android:layout_below="@id/label_nom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/label_nom"
+                android:layout_toEndOf="@+id/label_nom"/>
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp">
 
             <TextView
                 android:id="@+id/label_prenom"
@@ -208,17 +215,20 @@
 
             <TextView
                 android:id="@+id/tv_prenom"
-                android:layout_below="@id/label_prenom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/label_prenom"
+                android:layout_toEndOf="@+id/label_prenom"/>
+
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp">
 
             <TextView
                 android:id="@+id/label_age"
@@ -229,17 +239,20 @@
 
             <TextView
                 android:id="@+id/tv_age"
-                android:layout_below="@id/label_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/label_age"
+                android:layout_toEndOf="@+id/label_age"/>
+
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp">
 
             <TextView
                 android:id="@+id/label_adresse"
@@ -250,77 +263,82 @@
 
             <TextView
                 android:id="@+id/tv_adresse"
-                android:layout_below="@id/label_adresse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/label_adresse"
+                android:layout_toEndOf="@+id/label_adresse"/>
+
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp">
 
             <TextView
                 android:id="@+id/label_codePostal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:textSize="12sp"
                 android:text="Code postal : "/>
 
             <TextView
                 android:id="@+id/tv_codePostal"
-                android:layout_below="@id/label_codePostal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/label_codePostal"
+                android:layout_toEndOf="@+id/label_codePostal"/>
+
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp">
 
             <TextView
                 android:id="@+id/label_ville"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:textSize="12sp"
                 android:text="Ville : "/>
 
             <TextView
                 android:id="@+id/tv_ville"
-                android:layout_below="@id/label_ville"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/label_ville"
+                android:layout_toEndOf="@+id/label_ville"/>
+
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp">
             <TextView
                 android:id="@+id/label_area"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:textSize="12sp"
                 android:text="Region : "/>
-
             <TextView
                 android:id="@+id/tv_area"
-                android:layout_below="@id/label_area"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/label_area"
+                android:layout_toEndOf="@+id/label_area"/>
 
         </RelativeLayout>
 

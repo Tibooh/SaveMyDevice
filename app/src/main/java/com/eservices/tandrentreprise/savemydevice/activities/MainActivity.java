@@ -52,17 +52,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         app = (MyApplication) getApplication();
-        app.getAllDemandes();
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_home_black_24dp);
-
-        Fragment fragment = new ListDemandFragment();;
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.content_frame, fragment);
-        ft.commit();
-
 
 
         // 3.9
@@ -93,6 +85,11 @@ public class MainActivity extends AppCompatActivity
 
         auth = FirebaseAuth.getInstance();
         hideItem();
+
+        Fragment fragment = new ListDemandFragment();;
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, fragment);
+        ft.commit();
 
     }
 

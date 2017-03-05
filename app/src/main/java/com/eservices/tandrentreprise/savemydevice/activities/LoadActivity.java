@@ -5,14 +5,20 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.eservices.tandrentreprise.savemydevice.MyApplication;
 import com.eservices.tandrentreprise.savemydevice.R;
 
 public class LoadActivity extends AppCompatActivity {
+
+    MyApplication app;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load);
+
+        app = (MyApplication) getApplication();
+        app.getAllDemandes();
 
         Thread welcomeThread = new Thread() {
 
