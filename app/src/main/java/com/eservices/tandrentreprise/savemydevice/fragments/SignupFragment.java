@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -101,11 +102,13 @@ public class SignupFragment extends Fragment {
                                     Toast.makeText(getActivity(), "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
+                                    FirebaseUser currentUser= FirebaseAuth.getInstance().getCurrentUser();
+
                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                                     //Insertion dans la base de new user
                                     DatabaseReference ref = database.getReference("users");
 
-                                    User connectedUser = new User( "",  "", "", "", "", "", 0, "", "", "", 0, 0, 0);
+                                    User connectedUser = new User(currentUser.getUid() ,  "", "", "", "", "", 0, "", "", "", 0, 0, 0);
 
                                     String idUser = ref.push().getKey();
 

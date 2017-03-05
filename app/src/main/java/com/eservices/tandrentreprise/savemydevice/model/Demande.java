@@ -1,6 +1,8 @@
 package com.eservices.tandrentreprise.savemydevice.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Modele d'une demande d'aide
@@ -9,7 +11,7 @@ import java.io.Serializable;
 public class Demande implements Serializable {
 
 
-    public Integer idDemande;
+    public String idDemande;
     public String title;
     public String area;
     public String detail;
@@ -17,6 +19,7 @@ public class Demande implements Serializable {
     public String modeleAppareil;
     public String idUser;
     public Integer idDepanneur;
+    public List<Candidature> candidatures = new ArrayList<Candidature>();
 
 
     public Demande(){}
@@ -34,6 +37,7 @@ public class Demande implements Serializable {
     public String toString() {
         return title + " " + detail;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -42,7 +46,7 @@ public class Demande implements Serializable {
         this.area = area;
     }
 
-    public void setIdDemande(Integer idDemande) {
+    public void setIdDemande(String idDemande) {
         this.idDemande = idDemande;
     }
 
@@ -65,7 +69,8 @@ public class Demande implements Serializable {
     public void setIdDepanneur(Integer idDepanneur) {
         this.idDepanneur = idDepanneur;
     }
-    public Integer getIdDemande() {
+
+    public String getIdDemande() {
         return idDemande;
     }
 
@@ -95,5 +100,13 @@ public class Demande implements Serializable {
 
     public Integer getIdDepanneur() {
         return idDepanneur;
+    }
+
+    public List<Candidature> getCandidatures() {
+        return candidatures;
+    }
+
+    public void setCandidatures(List<Candidature> candidatures) {
+        this.candidatures = candidatures;
     }
 }

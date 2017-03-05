@@ -13,4 +13,9 @@
         <item>Software</item>
         <item>Je ne sais pas</item>
     </string-array>
+
+    <string-array name="peutBouger_array">
+        <item>Oui, je peux.</item>
+        <item>Non, Je ne peux pas.</item>
+    </string-array>
 </resources>

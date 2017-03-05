@@ -30,6 +30,8 @@ public class MyApplication extends Application {
     public List<Demande> myDemands;
     public List<Candidature> postulants;
 
+    public Demande demandeActuelle = null;
+
     public User connectedUser;
 
     @Override
@@ -72,7 +74,7 @@ public class MyApplication extends Application {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference demandesRef = database.getReference("demandes");
 
-
+        demands.clear();
         ChildEventListener demandeListener = new ChildEventListener() {
 
             @Override
