@@ -1,11 +1,13 @@
 package com.eservices.tandrentreprise.savemydevice.fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +26,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static android.R.id.input;
 
 /**
  * Created by camrad on 02/02/2017.
@@ -36,7 +41,7 @@ import java.util.Map;
 
 public class SignupFragment extends Fragment {
 
-    private EditText inputEmail, inputPassword;
+    private EditText inputEmail, inputPassword,inputPseudo,inputNomPrenom,inputAge,inputAdresse,inputVille,inputCodePostal;
     private Button btnSignIn, btnSignUp, btnResetPassword;
     //private ProgressBar progressBar;
     private FirebaseAuth auth;
@@ -47,12 +52,21 @@ public class SignupFragment extends Fragment {
 
         auth = FirebaseAuth.getInstance();
 
+        inputPseudo= (EditText) v.findViewById(R.id.pseudo);
+        inputNomPrenom= (EditText) v.findViewById(R.id.nom_prenom);
+        inputAge= (EditText) v.findViewById(R.id.age);
+        inputAdresse= (EditText) v.findViewById(R.id.adresse);
+        inputVille = (EditText) v.findViewById(R.id.ville);
+        inputCodePostal= (EditText) v.findViewById(R.id.code_postal);
+
+
         btnSignIn = (Button) v.findViewById(R.id.sign_in_button);
         btnSignUp = (Button) v.findViewById(R.id.sign_up_button);
         inputEmail = (EditText) v.findViewById(R.id.email);
         inputPassword = (EditText) v.findViewById(R.id.password);
         //progressBar = (ProgressBar) v.findViewById(R.id.progressBar);
         btnResetPassword = (Button) v.findViewById(R.id.btn_reset_password);
+
 
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -104,15 +118,27 @@ public class SignupFragment extends Fragment {
                                 } else {
                                     FirebaseUser currentUser= FirebaseAuth.getInstance().getCurrentUser();
 
+                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                            .setDisplayName(inputPseudo.getText().toString())
+                                            .build();
+
+                                    currentUser.updateProfile(profileUpdates)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        Toast.makeText(getActivity(), "Pseudo ajouté" + task.getException(),
+                                                                Toast.LENGTH_SHORT).show(); }
+                                                }
+                                            });
+
                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                                     //Insertion dans la base de new user
                                     DatabaseReference ref = database.getReference("users");
 
-                                    User connectedUser = new User(currentUser.getUid() ,  "", "", "", "", "", 0, "", "", "", 0, 0, 0);
+                                    User connectedUser = new User(currentUser.getUid() , inputPseudo.getText().toString(), inputNomPrenom.getText().toString(), "", Integer.parseInt(inputAge.getText().toString()), inputAdresse.getText().toString(),inputCodePostal.getText().toString(), inputVille.getText().toString());
 
-                                    String idUser = ref.push().getKey();
-
-                                    ref.child(idUser).setValue(connectedUser);
+                                    ref.child(currentUser.getUid()).setValue(connectedUser);
 
                                     Intent intent = new Intent(getActivity(), MainActivity.class);
                                     getActivity().startActivity(intent);

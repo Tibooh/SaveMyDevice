@@ -39,7 +39,6 @@ public class ListDemandFragment extends Fragment {
 /*
         ((MyApplication) getActivity().getApplication()).getAllDemandes();
 */
-
         list.setAdapter(new DemandsAdapter(getContext(), ((MyApplication) getActivity().getApplication()).demands));
 
         // TODO : Gestion du clique sur l'item (2.1)

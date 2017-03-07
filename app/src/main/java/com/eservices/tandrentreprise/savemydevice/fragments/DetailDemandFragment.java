@@ -30,6 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
+import static android.R.attr.id;
 import static com.eservices.tandrentreprise.savemydevice.R.id.prix;
 
 
@@ -69,6 +70,12 @@ public class DetailDemandFragment extends Fragment {
         modele = (TextView) v.findViewById(R.id.modele);
         if (demande != null) {
             updateDisplay();
+        }
+
+        // on ne peut pas postuler à sa propre demande
+        if(demande.getIdUser()==FirebaseAuth.getInstance().getCurrentUser().getUid())
+        {
+            btnPostuler.setVisibility(View.INVISIBLE);
         }
 
         btnPostuler = (Button) v.findViewById(R.id.button_postuler);

@@ -65,7 +65,10 @@ public class MyApplication extends Application {
     public void getConnectedUser(){
         auth = FirebaseAuth.getInstance();
 
-        connectedUser = new User("", "" ,"Tibooh", "Pernet", "Thibaut", Area.HDF, 23, "28 rue de Lille", "59000" ,"LILLE", 5, 8, 385);
+        connectedUser = new User("", "Tibooh", "Thibaut Pernet", Area.HDF, 23, "28 rue de Lille", "59000" ,"LILLE");
+        connectedUser.setNbAnnonces(20);
+        connectedUser.setNbIntervention(18);
+        connectedUser.setGainTotal(550);
 
     }
 

@@ -3,29 +3,15 @@ package com.eservices.tandrentreprise.savemydevice.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.eservices.tandrentreprise.savemydevice.MyApplication;
 import com.eservices.tandrentreprise.savemydevice.R;
-import com.eservices.tandrentreprise.savemydevice.model.Area;
-import com.eservices.tandrentreprise.savemydevice.model.Demande;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 /**Fragment de la messagerie de l'applciation*/
@@ -66,8 +52,8 @@ public class ProfilFragment extends Fragment {
         gainTotal = (TextView) v.findViewById(R.id.tv_gain);
 
         pseudo.setText(app.connectedUser.getPseudo());
-        nom.setText(app.connectedUser.getNom());
-        prenom.setText(app.connectedUser.getPrenom());
+        nom.setText(app.connectedUser.getNomPrenom());
+        prenom.setText(app.connectedUser.getNomPrenom());
         region.setText(app.connectedUser.getRegion());
         age.setText(""+app.connectedUser.getAge());
         adresse.setText(app.connectedUser.getAdresse());

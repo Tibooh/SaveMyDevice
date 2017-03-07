@@ -36,6 +36,12 @@
     <string name="btn_cancel_reset_password">Annuler</string>
     <string name="btn_back"><![CDATA[<< Back]]></string>
     <string name="hint_new_email">New Email</string>
+    <string name="hint_pseudo">Pseudo</string>
+    <string name="hint_nom_prenom">Nom et prénom</string>
+    <string name="hint_adresse">Votre adresse</string>
+    <string name="hint_codePostal"> Code postal</string>
+    <string name="hint_ville"> Ville</string>
+    <string name="hint_age"> Age</string>
     <string name="btn_change">Change</string>
     <string name="btn_send">Send</string>
     <string name="btn_remove">Remove</string>

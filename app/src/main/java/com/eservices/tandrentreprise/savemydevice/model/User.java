@@ -10,8 +10,7 @@ public class User {
     public String providerIdUser;
 
     public String pseudo;
-    public String nom;
-    public String prenom;
+    public String nomPrenom;
     public String region;
     public int age;
     public String adresse;
@@ -25,20 +24,18 @@ public class User {
     public User(){
     }
 
-    public User(String uIdUser, String providerIdUser, String pseudo, String nom, String prenom, String region, int age, String adresse, String codePostal, String ville, int nbIntervention, int nbAnnonces, int gainTotal) {
+    public User(String uIdUser, String pseudo, String nomPrenom, String region, int age, String adresse, String codePostal, String ville) {
         this.uIdUser = uIdUser;
-        this.providerIdUser = providerIdUser;
         this.pseudo = pseudo;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.region = region;
+        this.nomPrenom = nomPrenom;
         this.age = age;
+        this.region = region;
         this.adresse = adresse;
         this.codePostal = codePostal;
         this.ville = ville;
-        this.nbIntervention = nbIntervention;
-        this.nbAnnonces = nbAnnonces;
-        this.gainTotal = gainTotal;
+        this.nbIntervention = 0;
+        this.nbAnnonces = 0;
+        this.gainTotal = 0;
     }
 
     public String getuIdUser() {
@@ -65,20 +62,12 @@ public class User {
         this.pseudo = pseudo;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomPrenom() {
+        return nomPrenom;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setNomPrenom(String nomPrenom) {
+        this.nomPrenom = nomPrenom;
     }
 
     public String getRegion() {
