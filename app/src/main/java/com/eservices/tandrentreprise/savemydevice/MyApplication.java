@@ -33,8 +33,7 @@ public class MyApplication extends Application {
 
 
     public final List<Demande> demands = new ArrayList<Demande>();
-    public List<Demande> myDemands;
-    public List<Candidature> postulants;
+    public final List<Demande> myDemands = new ArrayList<Demande>();
 
     public Demande demandeActuelle = null;
 
@@ -44,8 +43,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        myDemands = new ArrayList<>();
-        postulants = new ArrayList<>();
 
         /**Liste des demandes*/
  /*       demands.add(new Demande("Problème ordinateur", Area.HDF, "Orinateur ne démarre plus", "Hardware","Ordinateur Dell XY", "3EDEDE"));
@@ -57,11 +54,6 @@ public class MyApplication extends Application {
 
 
         *//**Mes demandes*/
-        for (int i=0; i<demands.size(); i++) {
-            if (demands.get(i).getIdUser().equals(auth.getCurrentUser().getUid())) {
-                myDemands.add(demands.get(0));
-            }
-        }
 
 
         /**Postulants a mes demandes*/
@@ -69,8 +61,6 @@ public class MyApplication extends Application {
         postulants.add(new Candidature(2,"Tibtib", 17, true));
         postulants.add(new Candidature(3,"Jacquie", 12, false));*/
     }
-
-
 
 
     public void getAllDemandes() {
@@ -85,28 +75,27 @@ public class MyApplication extends Application {
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Demande demande= dataSnapshot.getValue(Demande.class);
+                Demande demande = dataSnapshot.getValue(Demande.class);
                 demands.add(demande);
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                Demande demande= dataSnapshot.getValue(Demande.class);
+                Demande demande = dataSnapshot.getValue(Demande.class);
                 demands.add(demande);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Demande demande= dataSnapshot.getValue(Demande.class);
+                Demande demande = dataSnapshot.getValue(Demande.class);
                 demands.add(demande);
             }
-
 
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    Demande demande= dataSnapshot.getValue(Demande.class);
+                    Demande demande = dataSnapshot.getValue(Demande.class);
                     demands.add(demande);
                 }
             }
@@ -145,13 +134,21 @@ public class MyApplication extends Application {
         connectedUser.setAdresse("25 rue des champs");
         connectedUser.setAge(23);
         connectedUser.setCodePostal("59998");
-        connectedUser.setNomPrenom("");
+        connectedUser.setNomPrenom("Thibaut pernet");
         connectedUser.setRegion(Area.HDF);
         connectedUser.setVille("LILLE");
         connectedUser.setNbAnnonces(20);
         connectedUser.setNbIntervention(18);
         connectedUser.setGainTotal(550);
+    }
 
+    public void getMyDemands() {
+        myDemands.clear();
+        for (Demande d : demands) {
+            if (d.getIdUser().equals(auth.getCurrentUser().getUid())) {
+                myDemands.add(d);
+            }
+        }
     }
 }
 

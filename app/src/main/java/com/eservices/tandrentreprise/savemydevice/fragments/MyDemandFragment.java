@@ -16,11 +16,18 @@ import android.widget.ListView;
 /**Fragment de la liste de mes demandes*/
 public class MyDemandFragment extends Fragment {
 
+    MyApplication app;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO : Affichage du fragment (1.1)
         View v = inflater.inflate(R.layout.fragment_mydemand, null);
         ListView list = (ListView) v.findViewById(R.id.list_item);
+
+        app = (MyApplication) getActivity().getApplication();
+        app.getMyDemands();
+
         list.setAdapter(new DemandsAdapter(getContext(), ((MyApplication) getActivity().getApplication()).myDemands));
 
         // TODO : Gestion du clique sur l'item (2.1)
