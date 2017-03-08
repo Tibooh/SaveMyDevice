@@ -15,8 +15,8 @@
         <ImageView
             android:id="@+id/type"
             android:layout_margin="16dp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_centerHorizontal="true"
             android:src="@mipmap/type_hardware"/>
 
@@ -29,7 +29,6 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_below="@id/type" />
-
     </RelativeLayout>
 
     <LinearLayout
@@ -86,6 +85,18 @@
 
         </RelativeLayout>
 
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <ListView
+                android:id="@+id/list_postulant"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -98,27 +109,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Postuler"
-                android:id="@+id/button_postuler"
+                android:id="@+id/button_postuler_hide"
                 android:background="@drawable/rounded_button"
                 android:textAllCaps="false"
                 android:textSize="20dp"
-                android:textColor="@color/bg_login" />
+                android:textColor="@color/white" />
         </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ListView
-                android:id="@+id/list_postulant"
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </RelativeLayout>
-
-
-
-
-
     </LinearLayout>
-
 </LinearLayout>

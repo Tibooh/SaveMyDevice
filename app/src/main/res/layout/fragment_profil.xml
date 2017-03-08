@@ -207,30 +207,6 @@
             android:paddingBottom="5dp">
 
             <TextView
-                android:id="@+id/label_prenom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="Prénom : "/>
-
-            <TextView
-                android:id="@+id/tv_prenom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/label_prenom"
-                android:layout_toEndOf="@+id/label_prenom"/>
-
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="5dp">
-
-            <TextView
                 android:id="@+id/label_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

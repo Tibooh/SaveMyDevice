@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import com.eservices.tandrentreprise.savemydevice.MyApplication;
@@ -29,6 +30,7 @@ import java.util.List;
 public class ListDemandFragment extends Fragment {
 
     private FirebaseAuth auth;
+    private MyApplication app;
 
 
     @Override
@@ -36,10 +38,16 @@ public class ListDemandFragment extends Fragment {
         // TODO : Affichage du fragment (1.1)
         View v = inflater.inflate(R.layout.fragment_demand_list, null);
         ListView list = (ListView) v.findViewById(R.id.list_item);
+
+        app = (MyApplication) getActivity().getApplication();
+
+        BaseAdapter adapter = new DemandsAdapter(getContext(), ((MyApplication) getActivity().getApplication()).demands);
+        list.setAdapter(adapter);
+
 /*
-        ((MyApplication) getActivity().getApplication()).getAllDemandes();
+        app.getAllDemandes(adapter);
 */
-        list.setAdapter(new DemandsAdapter(getContext(), ((MyApplication) getActivity().getApplication()).demands));
+
 
         // TODO : Gestion du clique sur l'item (2.1)
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

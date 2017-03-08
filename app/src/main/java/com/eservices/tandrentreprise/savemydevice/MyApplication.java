@@ -1,20 +1,25 @@
 package com.eservices.tandrentreprise.savemydevice;
 
 import android.app.Application;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.util.Log;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.eservices.tandrentreprise.savemydevice.activities.MainActivity;
 import com.eservices.tandrentreprise.savemydevice.model.Area;
 import com.eservices.tandrentreprise.savemydevice.model.Candidature;
 import com.eservices.tandrentreprise.savemydevice.model.Demande;
 import com.eservices.tandrentreprise.savemydevice.model.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -32,7 +37,7 @@ public class MyApplication extends Application {
 
     public Demande demandeActuelle = null;
 
-    public User connectedUser;
+    public final User connectedUser = new User();
 
     @Override
     public void onCreate() {
@@ -40,7 +45,6 @@ public class MyApplication extends Application {
 
         myDemands = new ArrayList<>();
         postulants = new ArrayList<>();
-
 
         /**Liste des demandes*/
  /*       demands.add(new Demande("Problème ordinateur", Area.HDF, "Orinateur ne démarre plus", "Hardware","Ordinateur Dell XY", "3EDEDE"));
@@ -51,26 +55,22 @@ public class MyApplication extends Application {
         demands.add(new Demande("Lenteur internet", Area.GE,  "Navigateur plein de pub",  "Software", "Lenovo yoga", "DDE233"));
 
 
-        *//**Mes demandes*//*
-        myDemands.add(demands.get(0));*/
+        *//**Mes demandes*/
+        for (int i=0; i<demands.size(); i++) {
+            if (demands.get(i).getIdUser().equals(auth.getCurrentUser().getUid())) {
+                myDemands.add(demands.get(0));
+            }
+        }
 
 
         /**Postulants a mes demandes*/
-        postulants.add(new Candidature(1,"Roger", 15, true));
+/*        postulants.add(new Candidature(1,"Roger", 15, true));
         postulants.add(new Candidature(2,"Tibtib", 17, true));
-        postulants.add(new Candidature(3,"Jacquie", 12, false));
+        postulants.add(new Candidature(3,"Jacquie", 12, false));*/
     }
 
 
-    public void getConnectedUser(){
-        auth = FirebaseAuth.getInstance();
 
-        connectedUser = new User("", "Tibooh", "Thibaut Pernet", Area.HDF, 23, "28 rue de Lille", "59000" ,"LILLE");
-        connectedUser.setNbAnnonces(20);
-        connectedUser.setNbIntervention(18);
-        connectedUser.setGainTotal(550);
-
-    }
 
     public void getAllDemandes() {
 
@@ -78,20 +78,19 @@ public class MyApplication extends Application {
         DatabaseReference demandesRef = database.getReference("demandes");
 
         demands.clear();
+
         ChildEventListener demandeListener = new ChildEventListener() {
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Demande demande= dataSnapshot.getValue(Demande.class);
                 demands.add(demande);
-
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 Demande demande= dataSnapshot.getValue(Demande.class);
                 demands.add(demande);
-
             }
 
             @Override
@@ -117,6 +116,40 @@ public class MyApplication extends Application {
             }
         };
         demandesRef.addChildEventListener(demandeListener);
+
+    }
+
+
+    public void getConnectedUser(FirebaseUser currentUser) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("users").child(currentUser.getUid());
+
+        ref.getRef().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                connectedUser.setPseudo(dataSnapshot.child("pseudo").getValue().toString());
+                //}
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
+
+/*
+        connectedUser.setPseudo(currentUser.getEmail());
+        connectedUser.setAdresse("25 rue des champs");
+        connectedUser.setAge(23);
+        connectedUser.setCodePostal("59998");
+        connectedUser.setNomPrenom("");
+        connectedUser.setRegion(Area.HDF);
+        connectedUser.setVille("LILLE");
+        connectedUser.setNbAnnonces(20);
+        connectedUser.setNbIntervention(18);
+        connectedUser.setGainTotal(550);*/
+
     }
 }
 

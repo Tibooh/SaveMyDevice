@@ -3,6 +3,7 @@ package com.eservices.tandrentreprise.savemydevice.activities;
 import com.eservices.tandrentreprise.savemydevice.MyApplication;
 import com.eservices.tandrentreprise.savemydevice.R;
 
+import android.accounts.Account;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,6 +13,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -34,7 +36,17 @@ import com.eservices.tandrentreprise.savemydevice.fragments.MessagesFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.ParametreFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.ProfilFragment;
 import com.eservices.tandrentreprise.savemydevice.fragments.SignupFragment;
+import com.eservices.tandrentreprise.savemydevice.model.Area;
+import com.eservices.tandrentreprise.savemydevice.model.Demande;
+import com.eservices.tandrentreprise.savemydevice.model.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import junit.framework.Assert;
 
@@ -45,6 +57,7 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAuth auth;
     NavigationView navigationView;
     MyApplication app;
+    String id;
 
 
     @Override
@@ -67,8 +80,7 @@ public class MainActivity extends AppCompatActivity
 
         //3.9
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        {
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
@@ -84,16 +96,17 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         auth = FirebaseAuth.getInstance();
+        app.getConnectedUser(auth.getCurrentUser());
+
         hideItem();
 
-        Fragment fragment = new ListDemandFragment();;
+        Fragment fragment = new ListDemandFragment();
+        ;
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content_frame, fragment);
         ft.commit();
 
     }
-
-
 
 
     @Override
@@ -147,20 +160,20 @@ public class MainActivity extends AppCompatActivity
             fragment = new MyDemandFragment();
         } else if (id == R.id.nav_message) {
             fragment = new MessagesFragment();
-        }else if ( id == R.id.nav_add){
+        } else if (id == R.id.nav_add) {
             fragment = new CreateDemandFragment();
         } else if (id == R.id.nav_settings) {
             fragment = new ParametreFragment();
         } else if (id == R.id.nav_legal) {
             fragment = new LegalFragment();
-        } else if (id == R.id.home){
+        } else if (id == R.id.home) {
             fragment = new ListDemandFragment();
-        } else if (id == R.id.nav_connect){
-            fragment=new LoginFragment();
-        } else if (id == R.id.nav_create_account){
-            fragment=new SignupFragment();
+        } else if (id == R.id.nav_connect) {
+            fragment = new LoginFragment();
+        } else if (id == R.id.nav_create_account) {
+            fragment = new SignupFragment();
 
-        } else if (id == R.id.nav_deconnect){
+        } else if (id == R.id.nav_deconnect) {
             FirebaseAuth auth = FirebaseAuth.getInstance();
             if (auth.getCurrentUser() != null) {
                 Toast.makeText(MainActivity.this, "A bientot :" + auth.getCurrentUser().getEmail(),
@@ -185,23 +198,21 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    private void hideItem()
-    {
+    public void hideItem() {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         Menu nav_Menu = navigationView.getMenu();
         nav_Menu.findItem(R.id.nav_settings).setVisible(false);
 
-        View hView =  navigationView.getHeaderView(0);
-        TextView nav_user = (TextView)hView.findViewById(R.id.pseudo);
-        TextView nav_ageVille = (TextView)hView.findViewById(R.id.ageVille);
+        View hView = navigationView.getHeaderView(0);
+        TextView nav_user = (TextView) hView.findViewById(R.id.pseudo);
+        TextView nav_ageVille = (TextView) hView.findViewById(R.id.ageVille);
         ImageView img = (ImageView) hView.findViewById(R.id.photo_profile);
 
         if (auth.getCurrentUser() != null) {
-            app.getConnectedUser();
 
             /**HEADER*/
             nav_user.setText(app.connectedUser.getPseudo());
-            nav_ageVille.setText(app.connectedUser.getAge()+" ans - "+app.connectedUser.getRegion());
+            nav_ageVille.setText(app.connectedUser.getAge() + " ans - " + app.connectedUser.getRegion());
 
             img.setImageResource(R.drawable.phototest);
 
@@ -212,7 +223,8 @@ public class MainActivity extends AppCompatActivity
                     ft.replace(R.id.content_frame, fragment);
                     ft.commit();
                     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-                    drawer.closeDrawer(GravityCompat.START);}
+                    drawer.closeDrawer(GravityCompat.START);
+                }
             });
 
 
@@ -227,7 +239,7 @@ public class MainActivity extends AppCompatActivity
             //icone non connecté
             nav_Menu.findItem(R.id.nav_connect).setVisible(false);
             nav_Menu.findItem(R.id.nav_create_account).setVisible(false);
-        }else{
+        } else {
             /**HEADER*/
             nav_user.setText("Non connecté");
             nav_ageVille.setText("");
@@ -260,4 +272,7 @@ public class MainActivity extends AppCompatActivity
         Assert.assertNotNull(name);
         return context.getResources().getIdentifier(name, "phototest", context.getPackageName());
     }
+
+
+
 }

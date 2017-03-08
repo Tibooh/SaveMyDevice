@@ -12,11 +12,20 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
             >
+
+            <TextView
+                android:id="@+id/categorie_label_prix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:text="Tarif : "
+                android:layout_marginTop="10dp"/>
 
             <EditText
                 android:id="@+id/prix"
@@ -24,7 +33,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:inputType="numberDecimal"
-                android:hint="Votre prix"
+                android:textSize="14sp"
+                android:hint="Votre tarif (€)"
+                android:layout_toRightOf="@+id/categorie_label_prix"
+                android:layout_toEndOf="@+id/categorie_label_prix"
                 android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/colorPrimary"
                 android:background="@drawable/rounded_edittext"
@@ -42,7 +54,10 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Pouvez vous vous déplacer ?"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:text="Pouvez vous vous déplacer ? "
+
                 android:layout_marginTop="10dp"/>
 
             <Spinner
@@ -50,9 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/roundedspinner"
-                android:layout_marginLeft="125dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="20dp"
+                android:layout_toRightOf="@+id/categorie_label_peut_bouger"
+                android:layout_toEndOf="@+id/categorie_label_peut_bouger"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:popupBackground="#DFFFFFFF"/>
@@ -63,12 +77,14 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="20dp">
             <TextView
                 android:id="@+id/label_commentaire"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:textSize="14sp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Commentaire"
                 android:layout_marginTop="10dp"/>
@@ -114,7 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:gravity="center">

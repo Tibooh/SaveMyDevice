@@ -26,7 +26,7 @@ public class LoadActivity extends AppCompatActivity {
             public void run() {
                 try {
                     super.run();
-                    sleep(2000) ;
+                    sleep(3000) ;
                 } catch (Exception e) {
 
                 } finally {

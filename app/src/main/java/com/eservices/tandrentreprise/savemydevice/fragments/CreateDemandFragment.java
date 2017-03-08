@@ -36,6 +36,9 @@ import java.util.Map;
 /**Fragment de la messagerie de l'applciation*/
 public class CreateDemandFragment extends Fragment {
 
+
+        private FirebaseAuth auth;
+
         private EditText title;
         private EditText detail;
         private Spinner modele;
@@ -49,6 +52,7 @@ public class CreateDemandFragment extends Fragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+            auth = FirebaseAuth.getInstance();
 
             // Retourne votre fichier layout
             // Changer R.layout.yourlayoutfilename pour vos fragments
@@ -83,7 +87,7 @@ public class CreateDemandFragment extends Fragment {
                 public void onClick(View v) {
                     //Insertion dans la base de données
                     if ((title.getText().toString()!=null)&&(detail.getText().toString() != null)) {
-                        Demande demande = new Demande(title.getText().toString(), Area.HDF, detail.getText().toString(), type.getSelectedItem().toString(), modele.getSelectedItem().toString(), "dfdf");
+                        Demande demande = new Demande(title.getText().toString(), Area.HDF, detail.getText().toString(), type.getSelectedItem().toString(), modele.getSelectedItem().toString(), auth.getCurrentUser().getUid());
 //                    ((MyApplication) getActivity().getApplication()).demands.add(d);
                         addDemande(demande);
                         Toast.makeText(getActivity(), "La demande a été créé et ajouté à vos demande", Toast.LENGTH_SHORT).show();

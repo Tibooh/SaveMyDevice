@@ -19,7 +19,6 @@ public class ProfilFragment extends Fragment {
 
     private TextView pseudo;
     private TextView nom;
-    private TextView prenom;
     private TextView region;
     private TextView age;
     private TextView adresse;
@@ -41,7 +40,6 @@ public class ProfilFragment extends Fragment {
         // TODO : Affichage des infos (3.1)
         pseudo = (TextView) v.findViewById(R.id.tv_pseudo);
         nom = (TextView) v.findViewById(R.id.tv_nom);
-        prenom = (TextView) v.findViewById(R.id.tv_prenom);
         region = (TextView) v.findViewById(R.id.tv_area);
         age = (TextView) v.findViewById(R.id.tv_age);
         adresse = (TextView) v.findViewById(R.id.tv_adresse);
@@ -53,9 +51,8 @@ public class ProfilFragment extends Fragment {
 
         pseudo.setText(app.connectedUser.getPseudo());
         nom.setText(app.connectedUser.getNomPrenom());
-        prenom.setText(app.connectedUser.getNomPrenom());
         region.setText(app.connectedUser.getRegion());
-        age.setText(""+app.connectedUser.getAge());
+        age.setText(""+app.connectedUser.getAge()+ " ans");
         adresse.setText(app.connectedUser.getAdresse());
         codePostal.setText(app.connectedUser.getCodePostal());
         ville.setText(app.connectedUser.getVille());

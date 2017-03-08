@@ -127,12 +127,12 @@ public class PostulerFragment  extends Fragment{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("");
+        getActivity().setTitle("Candidature");
     }
 
 
     public void postuler(Demande demandeActuelle,String prix, boolean peutBouger){
-        FirebaseUser currentUser= FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         List<Candidature> candidatureList= demandeActuelle.getCandidatures();
         //recuperation ndu user connecté depuis la base
         //User connectedUser=getConnectedUserByUId(currentUser.getUid());
@@ -143,6 +143,7 @@ public class PostulerFragment  extends Fragment{
         }
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         //Candidature candidature = new Candidature(idCandidature,connectedUser.getPseudo(),prixDecimal,peutBouger);
+
         Candidature candidature = new Candidature(idCandidature,currentUser.getDisplayName(),prixDecimal,peutBouger);
 
         demandeActuelle.getCandidatures().add(candidature);

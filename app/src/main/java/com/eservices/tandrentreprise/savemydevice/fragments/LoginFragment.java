@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eservices.tandrentreprise.savemydevice.MyApplication;
 import com.eservices.tandrentreprise.savemydevice.R;
 import com.eservices.tandrentreprise.savemydevice.activities.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -120,6 +121,7 @@ public class LoginFragment extends Fragment {
                                 } else {
                                     Toast.makeText(getActivity(), "Bienvenue " + auth.getCurrentUser().getEmail(),
                                             Toast.LENGTH_SHORT).show();
+
                                     Intent intent = new Intent(getActivity(), MainActivity.class);
                                     getActivity().startActivity(intent);
                                 }

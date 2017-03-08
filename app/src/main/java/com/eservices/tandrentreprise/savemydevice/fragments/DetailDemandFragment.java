@@ -36,6 +36,10 @@ import static com.eservices.tandrentreprise.savemydevice.R.id.prix;
 
 /**Fragment de la messagerie de l'applciation*/
 public class DetailDemandFragment extends Fragment {
+
+    private FirebaseAuth auth;
+
+
     private Demande demande;
 
     private TextView title;
@@ -73,12 +77,16 @@ public class DetailDemandFragment extends Fragment {
         }
 
         // on ne peut pas postuler à sa propre demande
-        if(demande.getIdUser()==FirebaseAuth.getInstance().getCurrentUser().getUid())
-        {
-            btnPostuler.setVisibility(View.INVISIBLE);
+        auth = FirebaseAuth.getInstance();
+        if(auth.getCurrentUser()!=null) {
+            if (demande.getIdUser().equals(auth.getCurrentUser().getUid())) {
+                v.findViewById(R.id.button_postuler_hide).setVisibility(View.INVISIBLE);
+            }
+        }else{
+            v.findViewById(R.id.button_postuler_hide).setVisibility(View.INVISIBLE);
         }
 
-        btnPostuler = (Button) v.findViewById(R.id.button_postuler);
+        btnPostuler = (Button) v.findViewById(R.id.button_postuler_hide);
         btnPostuler.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 PostulerFragment fragment = new PostulerFragment();
