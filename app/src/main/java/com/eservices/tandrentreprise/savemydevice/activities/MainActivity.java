@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity
         nav_Menu.findItem(R.id.nav_settings).setVisible(false);
 
         View hView = navigationView.getHeaderView(0);
-        TextView nav_user = (TextView) hView.findViewById(R.id.pseudo);
+        TextView nav_user = (TextView) hView.findViewById(R.id.pseudo_header);
         TextView nav_ageVille = (TextView) hView.findViewById(R.id.ageVille);
         ImageView img = (ImageView) hView.findViewById(R.id.photo_profile);
 

@@ -64,7 +64,7 @@ public class ProfilFragment extends Fragment {
         ImageView img = (ImageView) v.findViewById(R.id.account_update);
         img.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Fragment fragment = new ProfilFragment();
+                Fragment fragment = new UpdateProfilFragment();
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, fragment);
                 ft.commit();

@@ -1,5 +1,6 @@
 package com.eservices.tandrentreprise.savemydevice;
 
+import android.accounts.Account;
 import android.app.Application;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -74,6 +75,7 @@ public class MyApplication extends Application {
 
     public void getAllDemandes() {
 
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference demandesRef = database.getReference("demandes");
 
@@ -121,25 +123,25 @@ public class MyApplication extends Application {
 
 
     public void getConnectedUser(FirebaseUser currentUser) {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("users").child(currentUser.getUid());
+   /*     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        ref.getRef().addValueEventListener(new ValueEventListener() {
+        DatabaseReference ref = database.getReference().child("users");
+
+        ref.child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                connectedUser.setPseudo(dataSnapshot.child("pseudo").getValue().toString());
-                //}
-            }
+            public void onDataChange(DataSnapshot snapshot) {
+                try{
+                    User user  = snapshot.getChildren().iterator().next().getValue(User.class);
+                    connectedUser.setPseudo(user.getPseudo());
 
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
+                } catch (Throwable e) {
+                }
             }
-        });
+            @Override public void onCancelled(DatabaseError error) { }
+        });*/
+        auth = FirebaseAuth.getInstance();
 
-/*
-        connectedUser.setPseudo(currentUser.getEmail());
+        connectedUser.setPseudo(currentUser.getDisplayName());
         connectedUser.setAdresse("25 rue des champs");
         connectedUser.setAge(23);
         connectedUser.setCodePostal("59998");
@@ -148,7 +150,7 @@ public class MyApplication extends Application {
         connectedUser.setVille("LILLE");
         connectedUser.setNbAnnonces(20);
         connectedUser.setNbIntervention(18);
-        connectedUser.setGainTotal(550);*/
+        connectedUser.setGainTotal(550);
 
     }
 }
