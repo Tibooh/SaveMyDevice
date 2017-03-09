@@ -2,14 +2,10 @@ package com.eservices.tandrentreprise.savemydevice.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,13 +14,10 @@ import android.widget.Toast;
 
 import com.eservices.tandrentreprise.savemydevice.MyApplication;
 import com.eservices.tandrentreprise.savemydevice.R;
-import com.eservices.tandrentreprise.savemydevice.fragments.DetailDemandFragment;
 import com.eservices.tandrentreprise.savemydevice.model.Candidature;
 import com.eservices.tandrentreprise.savemydevice.model.Demande;
 
 import java.util.List;
-
-import static android.R.id.list;
 
 /**
  * Adapter de la liste des postulants
@@ -73,7 +66,7 @@ public class PostulantsAdapter extends ArrayAdapter<Candidature> {
     public void setCandidatureFinale(Candidature candidatureFinale)
     {
         Demande demande = ((MyApplication) context.getApplicationContext()).demandeActuelle;
-        demande.setCadidatureFinale(candidatureFinale);
+        demande.setCandidatureFinale(candidatureFinale);
         Toast.makeText((Activity) context, "La candidature a été acceptée", Toast.LENGTH_SHORT).show();
 
 //        DetailDemandFragment fragment = new DetailDemandFragment();
