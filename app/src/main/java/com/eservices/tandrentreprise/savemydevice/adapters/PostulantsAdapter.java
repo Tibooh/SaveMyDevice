@@ -34,7 +34,7 @@ public class PostulantsAdapter extends ArrayAdapter<Candidature> {
         TextView tarif = (TextView) content.findViewById(R.id.tarif);
         ImageButton btnPostulant = (ImageButton)  content.findViewById(R.id.btnPostulant) ;
         ImageView canMove = (ImageView) content.findViewById(R.id.iconcar) ;
-
+        ;
         Candidature cur = getItem(position);
 
         if (cur.peutBouger==true){

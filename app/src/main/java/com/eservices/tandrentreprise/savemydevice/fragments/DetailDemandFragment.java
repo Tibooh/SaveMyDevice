@@ -38,6 +38,7 @@ import static com.eservices.tandrentreprise.savemydevice.R.id.prix;
 public class DetailDemandFragment extends Fragment {
 
     private FirebaseAuth auth;
+    private MyApplication app;
 
 
     private Demande demande;
@@ -49,6 +50,7 @@ public class DetailDemandFragment extends Fragment {
     private Button btnPostuler;
 
 
+
     @Override
     public void setArguments(Bundle args) {
         this.demande = (Demande) args.getSerializable("Demande");
@@ -57,6 +59,8 @@ public class DetailDemandFragment extends Fragment {
     @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_detail_demande, container, false);
+
+        app = (MyApplication) getActivity().getApplication();
 
         // TODO : Affichage des infos (3.1)
 
@@ -85,6 +89,7 @@ public class DetailDemandFragment extends Fragment {
         }else{
             v.findViewById(R.id.button_postuler_hide).setVisibility(View.INVISIBLE);
         }
+
 
         btnPostuler = (Button) v.findViewById(R.id.button_postuler_hide);
         btnPostuler.setOnClickListener(new View.OnClickListener() {

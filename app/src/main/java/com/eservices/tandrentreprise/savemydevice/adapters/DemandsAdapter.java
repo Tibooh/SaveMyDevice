@@ -1,6 +1,8 @@
 package com.eservices.tandrentreprise.savemydevice.adapters;
 
 import android.content.Context;
+
+import com.eservices.tandrentreprise.savemydevice.MyApplication;
 import com.eservices.tandrentreprise.savemydevice.model.Demande;
 import com.eservices.tandrentreprise.savemydevice.R;
 
@@ -38,9 +40,7 @@ public class DemandsAdapter extends ArrayAdapter<Demande> {
         TextView subtitle3 = (TextView) content.findViewById(R.id.subtitle3);
         TextView subtitle4 = (TextView) content.findViewById(R.id.subtitle4);
 
-
         ImageView iconDemande = (ImageView)  content.findViewById(R.id.iconDemande);
-
 
         Demande cur = getItem(position);
         if(cur.type.equals("Hardware")) {
