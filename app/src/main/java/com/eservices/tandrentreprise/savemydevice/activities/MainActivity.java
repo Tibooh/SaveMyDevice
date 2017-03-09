@@ -95,8 +95,6 @@ public class MainActivity extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        auth = FirebaseAuth.getInstance();
-        app.getConnectedUser(auth.getCurrentUser());
 
         hideItem();
 
@@ -209,8 +207,11 @@ public class MainActivity extends AppCompatActivity
 
         ImageView img = (ImageView) hView.findViewById(R.id.photo_profile);
 
-        if (auth.getCurrentUser() != null) {
+        auth = FirebaseAuth.getInstance();
 
+
+        if (auth.getCurrentUser() != null) {
+            app.getConnectedUser(auth.getCurrentUser());
             /**HEADER*/
             nav_user.setText(app.connectedUser.getPseudo()+ " - ");
             nav_ageVille.setText(" " + app.connectedUser.getAge() + " ans - " + app.connectedUser.getRegion());

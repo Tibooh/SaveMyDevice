@@ -21,6 +21,18 @@ public class Demande implements Serializable {
     public String idUser;
     public Integer idDepanneur;
     public List<Candidature> candidatures = new ArrayList<Candidature>();
+
+    public Candidature candidatureFinale;
+
+    public Candidature getCandidatureFinale() {
+        return candidatureFinale;
+    }
+
+    public void setCandidatureFinale(Candidature candidatureFinale) {
+        this.candidatureFinale = candidatureFinale;
+    }
+
+
     public Date dateDemande;
 
 
