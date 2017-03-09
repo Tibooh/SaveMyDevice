@@ -93,8 +93,14 @@ public class PostulerFragment  extends Fragment{
         btnPostuler.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Insertion dans la base de données
+                boolean peutBougerBool;
+                if ("Oui, je peux.".equals(peutBouger.getSelectedItem().toString()))
+                {
+                    peutBougerBool = true;
+                }
+                else peutBougerBool= false;
 
-                postuler(demandeActuelle,prix.getText().toString(),true);
+                postuler(demandeActuelle,prix.getText().toString(),peutBougerBool);
 //                    ((MyApplication) getActivity().getApplication()).demands.add(d);
                 Toast.makeText(getActivity(), "Votre proposition a bien été prise en compte", Toast.LENGTH_SHORT).show();
 
@@ -134,15 +140,12 @@ public class PostulerFragment  extends Fragment{
     public void postuler(Demande demandeActuelle,String prix, boolean peutBouger){
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         List<Candidature> candidatureList= demandeActuelle.getCandidatures();
-        //recuperation ndu user connecté depuis la base
-        //User connectedUser=getConnectedUserByUId(currentUser.getUid());
         int idCandidature = 1;
         int prixDecimal=Integer.parseInt(prix);
         if (candidatureList != null){
             idCandidature = demandeActuelle.getCandidatures().size()+1;
         }
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        //Candidature candidature = new Candidature(idCandidature,connectedUser.getPseudo(),prixDecimal,peutBouger);
 
         Candidature candidature = new Candidature(idCandidature,currentUser.getDisplayName(),prixDecimal,peutBouger);
 

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -40,7 +41,7 @@ public class DetailDemandFragment extends Fragment {
     private FirebaseAuth auth;
 
 
-    private Demande demande;
+    public Demande demande;
 
     private TextView title;
     private TextView detail;
@@ -62,6 +63,8 @@ public class DetailDemandFragment extends Fragment {
 
         ListView list = (ListView) v.findViewById(R.id.list_postulant);
         list.setAdapter(new PostulantsAdapter(getContext(), this.demande.getCandidatures()));
+
+
 
         type = (ImageView) v.findViewById(R.id.type);
         if (demande.type.equals("Hardware")){
