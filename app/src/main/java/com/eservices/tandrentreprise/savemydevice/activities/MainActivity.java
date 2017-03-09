@@ -101,7 +101,6 @@ public class MainActivity extends AppCompatActivity
         hideItem();
 
         Fragment fragment = new ListDemandFragment();
-        ;
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content_frame, fragment);
         ft.commit();
@@ -206,14 +205,16 @@ public class MainActivity extends AppCompatActivity
         View hView = navigationView.getHeaderView(0);
         TextView nav_user = (TextView) hView.findViewById(R.id.pseudo_header);
         TextView nav_ageVille = (TextView) hView.findViewById(R.id.ageVille);
+        TextView nav_gain = (TextView) hView.findViewById(R.id.navHeadergainSomme);
+
         ImageView img = (ImageView) hView.findViewById(R.id.photo_profile);
 
         if (auth.getCurrentUser() != null) {
 
             /**HEADER*/
-            nav_user.setText(app.connectedUser.getPseudo());
-            nav_ageVille.setText(app.connectedUser.getAge() + " ans - " + app.connectedUser.getRegion());
-
+            nav_user.setText(app.connectedUser.getPseudo()+ " - ");
+            nav_ageVille.setText(" " + app.connectedUser.getAge() + " ans - " + app.connectedUser.getRegion());
+            nav_gain.setText(app.connectedUser.getGainTotal() + " € ");
             img.setImageResource(R.drawable.phototest);
 
             img.setOnClickListener(new View.OnClickListener() {
@@ -243,6 +244,7 @@ public class MainActivity extends AppCompatActivity
             /**HEADER*/
             nav_user.setText("Non connecté");
             nav_ageVille.setText("");
+            nav_gain.setText("");
             img.setImageResource(R.drawable.logogo);
             img.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {

@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +47,8 @@ public class CreateDemandFragment extends Fragment {
         Button validate;
         Button btnBack;
 
+        private MyApplication app;
+
         private final FirebaseDatabase database = FirebaseDatabase.getInstance();
         private String userId= FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -53,6 +56,9 @@ public class CreateDemandFragment extends Fragment {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
             auth = FirebaseAuth.getInstance();
+
+
+            app = (MyApplication) getActivity().getApplication();
 
             // Retourne votre fichier layout
             // Changer R.layout.yourlayoutfilename pour vos fragments
@@ -86,9 +92,9 @@ public class CreateDemandFragment extends Fragment {
             validate.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     //Insertion dans la base de données
+                    Date currentDate = new Date(System.currentTimeMillis());
                     if ((title.getText().toString()!=null)&&(detail.getText().toString() != null)) {
-                        Demande demande = new Demande(title.getText().toString(), Area.HDF, detail.getText().toString(), type.getSelectedItem().toString(), modele.getSelectedItem().toString(), auth.getCurrentUser().getUid());
-//                    ((MyApplication) getActivity().getApplication()).demands.add(d);
+                        Demande demande = new Demande(title.getText().toString(), app.connectedUser.getVille(), detail.getText().toString(), type.getSelectedItem().toString(), modele.getSelectedItem().toString(), auth.getCurrentUser().getUid(), currentDate);
                         addDemande(demande);
                         Toast.makeText(getActivity(), "La demande a été créé et ajouté à vos demande", Toast.LENGTH_SHORT).show();
                         Fragment fragment = new MyDemandFragment();
@@ -129,10 +135,5 @@ public class CreateDemandFragment extends Fragment {
         String idDemande = ref.push().getKey();
         demande.setIdDemande(idDemande);
         ref.child(idDemande).setValue(demande);
-
-        //Map<String, Demande> demandes = new HashMap<String, Demande>();
-        //demandes.put(idDemande,demande);
-
-        //ref.setValue(demandes);
     }
 }

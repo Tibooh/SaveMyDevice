@@ -7,6 +7,10 @@
     <color name="colorBlanc">#F0FFFF</color>
     <color name="greenLogo">#7FC768</color>
 
+    <color name="redred">#ffa500</color>
+    <color name="orangeorange">#ff0000</color>
+
+
     <color name="bg_login">#26ae90</color>
     <color name="bg_register">#2e3237</color>
     <color name="bg_main">#428bca</color>
