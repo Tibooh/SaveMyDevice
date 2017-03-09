@@ -52,9 +52,10 @@ public class DemandsAdapter extends ArrayAdapter<Demande> {
         title.setText(cur.title);
         title.setTypeface(null, Typeface.BOLD);
         subtitle.setText("sur "+cur.getModeleAppareil());
-        subtitle2.setText("en "+cur.getArea());
+        subtitle2.setText("à "+cur.getArea());
         int nbCandidatures = cur.getCandidatures().size();
         subtitle3.setText(nbCandidatures+" ");
+
         if(nbCandidatures==0){
             subtitle3.setTextColor(Color.parseColor("#7FC768"));
         }else if (nbCandidatures<5){

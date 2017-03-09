@@ -49,7 +49,7 @@ public class DetailDemandFragment extends Fragment {
     private TextView modele;
     private ImageView type;
     private Button btnPostuler;
-
+    private TextView postulantValide;
 
 
     @Override
@@ -68,7 +68,7 @@ public class DetailDemandFragment extends Fragment {
         ListView list = (ListView) v.findViewById(R.id.list_postulant);
         list.setAdapter(new PostulantsAdapter(getContext(), this.demande.getCandidatures()));
 
-
+        postulantValide = (TextView) v.findViewById(R.id.postulantfinal);
 
         type = (ImageView) v.findViewById(R.id.type);
         if (demande.type.equals("Hardware")){
@@ -93,6 +93,15 @@ public class DetailDemandFragment extends Fragment {
             v.findViewById(R.id.button_postuler_hide).setVisibility(View.INVISIBLE);
         }
 
+        if(demande.getCandidatureFinale()!=null){
+            list.setVisibility(View.INVISIBLE);
+            v.findViewById(R.id.textViewPostulantfinal).setVisibility(View.VISIBLE);
+            postulantValide.setVisibility(View.VISIBLE);
+        }else{
+            postulantValide.setVisibility(View.INVISIBLE);
+            v.findViewById(R.id.textViewPostulantfinal).setVisibility(View.INVISIBLE);
+            list.setVisibility(View.VISIBLE);
+        }
 
         btnPostuler = (Button) v.findViewById(R.id.button_postuler_hide);
         btnPostuler.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +138,9 @@ public class DetailDemandFragment extends Fragment {
         this.title.setText(demande.title);
         this.detail.setText(demande.detail);
         this.modele.setText(demande.modeleAppareil);
+        if (demande.getCandidatureFinale()!=null) {
+            this.postulantValide.setText(demande.getCandidatureFinale().getNomPostulant());
+        }
     }
 
 
