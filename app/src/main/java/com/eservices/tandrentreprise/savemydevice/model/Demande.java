@@ -2,6 +2,7 @@ package com.eservices.tandrentreprise.savemydevice.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,28 +21,39 @@ public class Demande implements Serializable {
     public String idUser;
     public Integer idDepanneur;
     public List<Candidature> candidatures = new ArrayList<Candidature>();
-    public Candidature cadidatureFinale;
 
-    public Candidature getCadidatureFinale() {
-        return cadidatureFinale;
+    public Candidature candidatureFinale;
+
+    public Candidature getCandidatureFinale() {
+        return candidatureFinale;
     }
 
-    public void setCadidatureFinale(Candidature cadidatureFinale) {
-        this.cadidatureFinale = cadidatureFinale;
+    public void setCandidatureFinale(Candidature candidatureFinale) {
+        this.candidatureFinale = candidatureFinale;
     }
 
 
+    public Date dateDemande;
 
 
     public Demande(){}
 
-    public Demande(String title, String area, String detail, String type, String modeleAppareil ,String idUser) {
+    public Demande(String title, String area, String detail, String type, String modeleAppareil ,String idUser, Date dateDemande) {
         this.title = title;
         this.area = area;
         this.detail = detail;
         this.type = type;
         this.modeleAppareil = modeleAppareil;
         this.idUser = idUser;
+        this.dateDemande=dateDemande;
+    }
+
+    public Date getDateDemande() {
+        return dateDemande;
+    }
+
+    public void setDateDemande(Date dateDemande) {
+        this.dateDemande = dateDemande;
     }
 
     @Override
