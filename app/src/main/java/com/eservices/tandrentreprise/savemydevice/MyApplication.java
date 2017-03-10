@@ -50,24 +50,6 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-
-        /**Liste des demandes*/
- /*       demands.add(new Demande("Problème ordinateur", Area.HDF, "Orinateur ne démarre plus", "Hardware","Ordinateur Dell XY", "3EDEDE"));
-        demands.add(new Demande("Problème PC", Area.BFC,"Il ne démarre plus", "Hardware", "Asus rogue one","3ED"));
-        demands.add(new Demande("Problème fichier word", Area.HDF,  "Il s'ouvre pas",  "Software", "MacBook Pro", "ZSs2"));
-        demands.add(new Demande("Problème internet", Area.OCC, "Impossible d'acceder à internet", "Software","MacBook air 2", "SDD3"));
-        demands.add(new Demande("Problème tablette", Area.PDL,  "Elle s'éteinds toute seule",  "Hardware", "Ipad 2","DD323"));
-        demands.add(new Demande("Lenteur internet", Area.GE,  "Navigateur plein de pub",  "Software", "Lenovo yoga", "DDE233"));
-
-
-        *//**Mes demandes*/
-
-
-        /**Postulants a mes demandes*/
-/*        postulants.add(new Candidature(1,"Roger", 15, true));
-        postulants.add(new Candidature(2,"Tibtib", 17, true));
-        postulants.add(new Candidature(3,"Jacquie", 12, false));*/
     }
 
 
@@ -165,23 +147,26 @@ public class MyApplication extends Application {
 
     public void getConnectedUser(FirebaseUser currentUser) {
 
-        for (User user : users)
-        {
-            if (user.getuIdUser().equals(currentUser.getUid()))
-            {
-                connectedUser = user;
+        if (currentUser!=null) {
+            for (User user : users) {
+                if (user.getuIdUser().equals(currentUser.getUid())) {
+                    connectedUser = user;
+                }
             }
         }
-//        connectedUser.setPseudo(currentUser.getDisplayName());
-//        connectedUser.setAdresse("25 rue des champs");
-//        connectedUser.setAge(23);
-//        connectedUser.setCodePostal("59998");
-//        connectedUser.setNomPrenom("Thibaut pernet");
-//        connectedUser.setRegion(Area.HDF);
-//        connectedUser.setVille("LILLE");
-//        connectedUser.setNbAnnonces(20);
-//        connectedUser.setNbIntervention(18);
-//        connectedUser.setGainTotal(550);
+/*        if (connectedUser.getuIdUser()==null) {
+            connectedUser.setPseudo(currentUser.getDisplayName());
+            connectedUser.setAdresse("25 rue des champs");
+            connectedUser.setAge(23);
+            connectedUser.setCodePostal("59998");
+            connectedUser.setNomPrenom("Thibaut pernet");
+            connectedUser.setRegion(Area.HDF);
+            connectedUser.setVille("LILLE");
+            connectedUser.setNbAnnonces(20);
+            connectedUser.setNbIntervention(18);
+            connectedUser.setGainTotal(550);
+            connectedUser.setuIdUser(currentUser.getUid());
+        }*/
     }
 
     public void getMyDemands() {

@@ -39,6 +39,12 @@
             android:layout_toRightOf="@+id/modele_labelcreate"
             android:layout_toEndOf="@+id/modele_labelcreate"/>
 
+        <CheckBox android:id="@+id/checkbox_vendu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Non vendu"
+            android:layout_toRightOf="@+id/modeleSpinFilter"/>
+
         <Button
             android:id="@+id/btn_search"
             android:layout_width="60dp"
@@ -48,9 +54,11 @@
             android:textColor="@android:color/white"
             android:textAllCaps="false"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/modeleSpinFilter"
+            android:layout_toRightOf="@+id/checkbox_vendu"
             android:textSize="14dp"/>
     </RelativeLayout>
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
