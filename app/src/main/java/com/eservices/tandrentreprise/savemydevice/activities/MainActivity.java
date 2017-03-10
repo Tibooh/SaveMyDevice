@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity
             app.getConnectedUser(auth.getCurrentUser());
             /**HEADER*/
             nav_user.setText(app.connectedUser.getPseudo()+ " - ");
-            nav_ageVille.setText(" " + app.connectedUser.getAge() + " ans - " + app.connectedUser.getRegion());
+            nav_ageVille.setText(" " + app.connectedUser.getAge() + " ans - " + app.connectedUser.getVille());
             nav_gain.setText(app.connectedUser.getGainTotal() + " € ");
             img.setImageResource(R.drawable.phototest);
 
