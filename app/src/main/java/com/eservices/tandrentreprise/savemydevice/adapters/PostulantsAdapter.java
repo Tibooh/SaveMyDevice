@@ -70,8 +70,8 @@ public class PostulantsAdapter extends ArrayAdapter<Candidature> {
             canMove.setVisibility(View.INVISIBLE);
         }
 
-        if(app.auth.getCurrentUser()!=null) {
-            if (!app.demandeActuelle.getIdUser().equals(app.auth.getCurrentUser().getUid())) {
+        if(app.connectedUser.getuIdUser()!=null) {
+            if (!app.demandeActuelle.getIdUser().equals(app.connectedUser.getuIdUser())) {
                 btnPostulant.setVisibility(View.INVISIBLE);
             }
         }else{
@@ -113,7 +113,7 @@ public class PostulantsAdapter extends ArrayAdapter<Candidature> {
         ref.setValue(theUser);
 
         Toast.makeText((Activity) context, "La candidature a été acceptée", Toast.LENGTH_SHORT).show();
-        
+
     }
 
 }
