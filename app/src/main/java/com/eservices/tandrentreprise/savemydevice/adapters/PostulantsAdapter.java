@@ -26,6 +26,8 @@ public class PostulantsAdapter extends ArrayAdapter<Candidature> {
 
     Context context;
 
+    private MyApplication app;
+
     public PostulantsAdapter(Context context, List<Candidature> postulants) {
         super(context, R.layout.postulant_list, postulants);
         this.context=context;
@@ -36,6 +38,9 @@ public class PostulantsAdapter extends ArrayAdapter<Candidature> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View content = inflater.inflate(R.layout.postulant_list, null);
+
+
+        app = (MyApplication) context.getApplicationContext();
 
         TextView name = (TextView) content.findViewById(R.id.name);
         TextView tarif = (TextView) content.findViewById(R.id.tarif);
@@ -49,6 +54,14 @@ public class PostulantsAdapter extends ArrayAdapter<Candidature> {
             canMove.setVisibility(View.VISIBLE);
         }else{
             canMove.setVisibility(View.INVISIBLE);
+        }
+
+        if(app.auth.getCurrentUser()!=null) {
+            if (!app.demandeActuelle.getIdUser().equals(app.auth.getCurrentUser().getUid())) {
+                btnPostulant.setVisibility(View.INVISIBLE);
+            }
+        }else{
+            btnPostulant.setVisibility(View.INVISIBLE);
         }
 
         name.setText(cur.nomPostulant);

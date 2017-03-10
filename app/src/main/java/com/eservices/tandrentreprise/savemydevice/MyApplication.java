@@ -29,7 +29,7 @@ import java.util.List;
 
 public class MyApplication extends Application {
 
-    private FirebaseAuth auth;
+    public FirebaseAuth auth;
 
 
     public final List<Demande> demands = new ArrayList<Demande>();

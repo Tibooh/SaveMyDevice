@@ -24,6 +24,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAuth auth;
     NavigationView navigationView;
     MyApplication app;
-    String id;
+
 
 
     @Override
@@ -133,6 +134,8 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_home) {
             fragment = new ListDemandFragment();
+        }else if(id == R.id.action_fiter){
+
         }
 
         if (fragment != null) {

@@ -4,10 +4,53 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ListView
-        android:id="@+id/list_item"
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:weightSum="1">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/filterHeader"
+        >
+        <TextView
+            android:id="@+id/modele_labelcreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="14dp"
+            android:text="Modèle : "
+            android:layout_marginTop="10dp"/>
+
+        <Spinner
+            android:id="@+id/modeleSpinFilter"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundedspinner"
+            android:paddingLeft="8dp"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:popupBackground="#DFFFFFFF"
+            android:layout_toRightOf="@+id/modele_labelcreate"
+            android:layout_toEndOf="@+id/modele_labelcreate"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/filterHeader">
+        <ListView
+            android:id="@+id/list_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </RelativeLayout>
+    </LinearLayout>
 
 
     <android.support.design.widget.FloatingActionButton
@@ -20,5 +63,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+
 </FrameLayout>
 

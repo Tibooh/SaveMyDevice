@@ -86,7 +86,7 @@ public class DetailDemandFragment extends Fragment {
         // on ne peut pas postuler à sa propre demande
         auth = FirebaseAuth.getInstance();
         if(auth.getCurrentUser()!=null) {
-            if (demande.getIdUser().equals(auth.getCurrentUser().getUid())) {
+            if (demande.getIdUser().equals(auth.getCurrentUser().getUid()) || demande.getCandidatureFinale() != null) {
                 v.findViewById(R.id.button_postuler_hide).setVisibility(View.INVISIBLE);
             }
         }else{

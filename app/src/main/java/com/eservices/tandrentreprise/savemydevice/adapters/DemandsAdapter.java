@@ -65,9 +65,9 @@ public class DemandsAdapter extends ArrayAdapter<Demande> {
             if (nbCandidatures == 0) {
                 subtitle3.setTextColor(Color.parseColor("#7FC768"));
             } else if (nbCandidatures < 5) {
-                subtitle3.setTextColor(Color.parseColor("#ff0000"));
-            } else {
                 subtitle3.setTextColor(Color.parseColor("#ffa500"));
+            } else {
+                subtitle3.setTextColor(Color.parseColor("#ff0000"));
             }
         }
 
