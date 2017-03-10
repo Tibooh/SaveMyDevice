@@ -2,7 +2,10 @@ package com.eservices.tandrentreprise.savemydevice.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +18,8 @@ import android.widget.Toast;
 
 import com.eservices.tandrentreprise.savemydevice.MyApplication;
 import com.eservices.tandrentreprise.savemydevice.R;
+import com.eservices.tandrentreprise.savemydevice.activities.MainActivity;
+import com.eservices.tandrentreprise.savemydevice.fragments.ListDemandFragment;
 import com.eservices.tandrentreprise.savemydevice.model.Candidature;
 import com.eservices.tandrentreprise.savemydevice.model.Demande;
 import com.eservices.tandrentreprise.savemydevice.model.User;
@@ -113,7 +118,8 @@ public class PostulantsAdapter extends ArrayAdapter<Candidature> {
         ref.setValue(theUser);
 
         Toast.makeText((Activity) context, "La candidature a été acceptée", Toast.LENGTH_SHORT).show();
-        
+        Intent intent = new Intent((Activity)context, MainActivity.class);
+        ((Activity) context).startActivity(intent);
     }
 
 }
