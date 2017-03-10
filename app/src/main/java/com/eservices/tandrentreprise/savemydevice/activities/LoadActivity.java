@@ -19,6 +19,7 @@ public class LoadActivity extends AppCompatActivity {
 
         app = (MyApplication) getApplication();
         app.getAllDemandes();
+        app.getAllUsers();
 
         Thread welcomeThread = new Thread() {
 
