@@ -184,7 +184,7 @@ public class MyApplication extends Application {
     public void getMyDemands() {
         myDemands.clear();
         for (Demande d : demands) {
-            if (d.getIdUser().equals(auth.getCurrentUser().getUid())) {
+            if (d.getIdUser().equals(connectedUser.getuIdUser())) {
                 myDemands.add(d);
             }
         }
