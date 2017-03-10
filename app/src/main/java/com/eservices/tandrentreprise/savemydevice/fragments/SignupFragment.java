@@ -52,7 +52,7 @@ public class SignupFragment extends Fragment {
 
         auth = FirebaseAuth.getInstance();
 
-        inputPseudo= (EditText) v.findViewById(R.id.pseudo);
+        inputPseudo= (EditText) v.findViewById(R.id.pseudoUser);
         inputNomPrenom= (EditText) v.findViewById(R.id.nom_prenom);
         inputAge= (EditText) v.findViewById(R.id.age);
         inputAdresse= (EditText) v.findViewById(R.id.adresse);
@@ -78,6 +78,8 @@ public class SignupFragment extends Fragment {
             ft.commit();
             }
         });
+
+        String pseudo = inputPseudo.getText().toString();
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override

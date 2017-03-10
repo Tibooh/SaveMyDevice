@@ -4,11 +4,14 @@ import android.accounts.Account;
 import android.app.Application;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.eservices.tandrentreprise.savemydevice.activities.MainActivity;
+import com.eservices.tandrentreprise.savemydevice.fragments.ListDemandFragment;
 import com.eservices.tandrentreprise.savemydevice.model.Area;
 import com.eservices.tandrentreprise.savemydevice.model.Candidature;
 import com.eservices.tandrentreprise.savemydevice.model.Demande;
@@ -150,6 +153,7 @@ public class MyApplication extends Application {
             }
         }
     }
+
 }
 
 
