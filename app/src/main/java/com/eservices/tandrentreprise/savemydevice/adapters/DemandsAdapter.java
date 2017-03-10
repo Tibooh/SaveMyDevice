@@ -38,6 +38,8 @@ public class DemandsAdapter extends ArrayAdapter<Demande> {
         TextView subtitle = (TextView) content.findViewById(R.id.subtitle);
         TextView subtitle2 = (TextView) content.findViewById(R.id.subtitle2);
         TextView subtitle3 = (TextView) content.findViewById(R.id.subtitle3);
+        TextView subtitle3bis = (TextView) content.findViewById(R.id.subtitle3bis);
+
         TextView subtitle4 = (TextView) content.findViewById(R.id.subtitle4);
 
         ImageView iconDemande = (ImageView)  content.findViewById(R.id.iconDemande);
@@ -56,12 +58,17 @@ public class DemandsAdapter extends ArrayAdapter<Demande> {
         int nbCandidatures = cur.getCandidatures().size();
         subtitle3.setText(nbCandidatures+" ");
 
-        if(nbCandidatures==0){
-            subtitle3.setTextColor(Color.parseColor("#7FC768"));
-        }else if (nbCandidatures<5){
-            subtitle3.setTextColor(Color.parseColor("#ff0000"));
-        }else{
-            subtitle3.setTextColor(Color.parseColor("#ffa500"));
+        if (cur.getCandidatureFinale()!=null){
+            subtitle3bis.setVisibility(View.INVISIBLE);
+            subtitle3.setText("Vendue");
+        }else {
+            if (nbCandidatures == 0) {
+                subtitle3.setTextColor(Color.parseColor("#7FC768"));
+            } else if (nbCandidatures < 5) {
+                subtitle3.setTextColor(Color.parseColor("#ff0000"));
+            } else {
+                subtitle3.setTextColor(Color.parseColor("#ffa500"));
+            }
         }
 
         Date currentDate = new Date(System.currentTimeMillis());
