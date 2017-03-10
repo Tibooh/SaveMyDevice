@@ -40,6 +40,8 @@ public class MyApplication extends Application {
     public final List<Demande> myDemands = new ArrayList<Demande>();
     public final List<User> users= new ArrayList<User>();
 
+    public List<Demande> filteredDemands =  new ArrayList<Demande>();
+
 
     public Demande demandeActuelle = null;
 
@@ -116,6 +118,7 @@ public class MyApplication extends Application {
 
     }
 
+
     public void getAllUsers()
     {
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
@@ -188,6 +191,21 @@ public class MyApplication extends Application {
                 myDemands.add(d);
             }
         }
+    }
+
+    public void getDemandeFilterd(String modele){
+        filteredDemands.clear();
+        for (Demande d : demands) {
+
+            if (modele.equals("Tous")) {
+                filteredDemands.add(d);
+            }else {
+                if (modele.equals(d.getModeleAppareil())) {
+                    filteredDemands.add(d);
+                }
+            }
+        }
+
     }
 
 

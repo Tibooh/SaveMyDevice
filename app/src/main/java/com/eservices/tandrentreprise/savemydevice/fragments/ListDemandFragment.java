@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -44,16 +45,19 @@ public class ListDemandFragment extends Fragment {
 
         app = (MyApplication) getActivity().getApplication();
 
-        BaseAdapter adapter = new DemandsAdapter(getContext(), ((MyApplication) getActivity().getApplication()).demands);
+        app.getDemandeFilterd("Tous");
+
+        final BaseAdapter adapter = new DemandsAdapter(getContext(), ((MyApplication) getActivity().getApplication()).filteredDemands);
         list.setAdapter(adapter);
 
         modele = (Spinner) v.findViewById(R.id.modeleSpinFilter);
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapterSpinner = ArrayAdapter.createFromResource(getActivity(), R.array.modele_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapterSpinner = ArrayAdapter.createFromResource(getActivity(), R.array.modele_filter, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         modele.setAdapter(adapterSpinner);
+
 
 
         // TODO : Gestion du clique sur l'item (2.1)
@@ -62,7 +66,7 @@ public class ListDemandFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 DetailDemandFragment fragment = new DetailDemandFragment();
                 Bundle b = new Bundle();
-                b.putSerializable("Demande", ((MyApplication) getActivity().getApplication()).demands.get(position));
+                b.putSerializable("Demande", ((MyApplication) getActivity().getApplication()).filteredDemands.get(position));
                 fragment.setArguments(b);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.content_frame, fragment);
@@ -81,6 +85,15 @@ public class ListDemandFragment extends Fragment {
                     ft.replace(R.id.content_frame, fragment);
                     ft.commit();
                 }
+            }
+        });
+
+        Button btnSearch = (Button) v.findViewById(R.id.btn_search);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                app.getDemandeFilterd(modele.getSelectedItem().toString());
+                adapter.notifyDataSetChanged();
             }
         });
 
