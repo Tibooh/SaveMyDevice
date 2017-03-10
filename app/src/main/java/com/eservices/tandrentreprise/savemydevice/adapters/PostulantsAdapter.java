@@ -109,6 +109,7 @@ public class PostulantsAdapter extends ArrayAdapter<Candidature> {
         ref.setValue(theUser);
 
         Toast.makeText((Activity) context, "La candidature a été acceptée", Toast.LENGTH_SHORT).show();
+
     }
 
 }
