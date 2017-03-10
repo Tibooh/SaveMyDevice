@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,10 +38,12 @@ public class MyApplication extends Application {
 
     public final List<Demande> demands = new ArrayList<Demande>();
     public final List<Demande> myDemands = new ArrayList<Demande>();
+    public final List<User> users= new ArrayList<User>();
+
 
     public Demande demandeActuelle = null;
 
-    public final User connectedUser = new User();
+    public User connectedUser = new User();
 
     @Override
     public void onCreate() {
@@ -113,36 +116,69 @@ public class MyApplication extends Application {
 
     }
 
+    public void getAllUsers()
+    {
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersRef = database.child("users");
+        ChildEventListener usersListener = new ChildEventListener() {
 
-    public void getConnectedUser(FirebaseUser currentUser) {
-   /*     FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        DatabaseReference ref = database.getReference().child("users");
-
-        ref.child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                try{
-                    User user  = snapshot.getChildren().iterator().next().getValue(User.class);
-                    connectedUser.setPseudo(user.getPseudo());
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                User user = dataSnapshot.getValue(User.class);
+                users.add(user);
+            }
 
-                } catch (Throwable e) {
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                User user = dataSnapshot.getValue(User.class);
+                users.add(user);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                users.add(user);
+            }
+
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    User user = data.getValue(User.class);
+                    users.add(user);
                 }
             }
-            @Override public void onCancelled(DatabaseError error) { }
-        });*/
-        auth = FirebaseAuth.getInstance();
 
-        connectedUser.setPseudo(currentUser.getDisplayName());
-        connectedUser.setAdresse("25 rue des champs");
-        connectedUser.setAge(23);
-        connectedUser.setCodePostal("59998");
-        connectedUser.setNomPrenom("Thibaut pernet");
-        connectedUser.setRegion(Area.HDF);
-        connectedUser.setVille("LILLE");
-        connectedUser.setNbAnnonces(20);
-        connectedUser.setNbIntervention(18);
-        connectedUser.setGainTotal(550);
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w("getAllDemandes", "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        usersRef.addChildEventListener(usersListener);
+
+    }
+
+
+    public void getConnectedUser(FirebaseUser currentUser) {
+
+        for (User user : users)
+        {
+            if (user.getuIdUser().equals(currentUser.getUid()))
+            {
+                connectedUser = user;
+            }
+        }
+//        connectedUser.setPseudo(currentUser.getDisplayName());
+//        connectedUser.setAdresse("25 rue des champs");
+//        connectedUser.setAge(23);
+//        connectedUser.setCodePostal("59998");
+//        connectedUser.setNomPrenom("Thibaut pernet");
+//        connectedUser.setRegion(Area.HDF);
+//        connectedUser.setVille("LILLE");
+//        connectedUser.setNbAnnonces(20);
+//        connectedUser.setNbIntervention(18);
+//        connectedUser.setGainTotal(550);
     }
 
     public void getMyDemands() {
@@ -153,6 +189,8 @@ public class MyApplication extends Application {
             }
         }
     }
+
+
 
 }
 

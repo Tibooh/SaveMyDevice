@@ -19,6 +19,7 @@ import com.eservices.tandrentreprise.savemydevice.model.Candidature;
 import com.eservices.tandrentreprise.savemydevice.model.Demande;
 import com.eservices.tandrentreprise.savemydevice.model.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -88,42 +89,26 @@ public class PostulantsAdapter extends ArrayAdapter<Candidature> {
     public void setCandidatureFinale(Candidature candidatureFinale)
     {
         Demande demande = ((MyApplication) context.getApplicationContext()).demandeActuelle;
-        demande.setCandidatureFinale(candidatureFinale);
+        //((MyApplication) context.getApplicationContext()).getAllUsers();
+        List<User> users= ((MyApplication) context.getApplicationContext()).users;
 
+        demande.setCandidatureFinale(candidatureFinale);
+        User theUser=null;
         //recuperer le createur de la candidature pour la MAJ
-        List<User> users=getCreatorOfCandidature(candidatureFinale.getUserId());
-        User user=getCreateurDeLaDemande();
-        user.setNbIntervention(user.getNbIntervention()+1);
-        user.setGainTotal(user.getGainTotal()+candidatureFinale.getPrixPropose());
+        for (User user : users)
+        {
+            if (user.getuIdUser().equals(candidatureFinale.getUserId()))
+            {
+                theUser=user;
+            }
+        }
+        theUser.setNbIntervention(theUser.getNbIntervention()+1);
+        theUser.setGainTotal(theUser.getGainTotal()+candidatureFinale.getPrixPropose());
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref = database.child("users").child(candidatureFinale.getUserId());
-        ref.setValue(user);
+        ref.setValue(theUser);
 
         Toast.makeText((Activity) context, "La candidature a été acceptée", Toast.LENGTH_SHORT).show();
     }
 
-    public List<User> getCreatorOfCandidature(String userId)
-    {
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference ref = database.child("users");
-        final List<User> users= new ArrayList<User>();
-        Query query = ref.equalTo(userId);
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                try{
-                    for (DataSnapshot data : snapshot.getChildren())
-                    {
-                        User user = data.getValue(User.class);
-                        System.out.println(" USER ADRESS : " + user.getAdresse());
-                        setCreateurDeLaDemande(user);
-                        users.add(user);
-                    }
-                } catch (Throwable e) {
-                }
-            }
-            @Override public void onCancelled(DatabaseError error) { }
-        });
-        return users;
-    }
 }
