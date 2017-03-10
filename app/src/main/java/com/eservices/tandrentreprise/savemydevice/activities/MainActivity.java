@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         app = (MyApplication) getApplication();
+        auth = FirebaseAuth.getInstance();
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_home_black_24dp);
@@ -171,7 +173,7 @@ public class MainActivity extends AppCompatActivity
             fragment = new SignupFragment();
 
         } else if (id == R.id.nav_deconnect) {
-            FirebaseAuth auth = FirebaseAuth.getInstance();
+
             if (auth.getCurrentUser() != null) {
                 Toast.makeText(MainActivity.this, "A bientot :" + auth.getCurrentUser().getEmail(),
                         Toast.LENGTH_SHORT).show();
@@ -206,9 +208,6 @@ public class MainActivity extends AppCompatActivity
         TextView nav_gain = (TextView) hView.findViewById(R.id.navHeadergainSomme);
 
         ImageView img = (ImageView) hView.findViewById(R.id.photo_profile);
-
-        auth = FirebaseAuth.getInstance();
-
 
         if (auth.getCurrentUser() != null) {
             app.getConnectedUser(auth.getCurrentUser());

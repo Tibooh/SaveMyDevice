@@ -147,7 +147,7 @@ public class PostulerFragment  extends Fragment{
         }
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
 
-        Candidature candidature = new Candidature(idCandidature,currentUser.getDisplayName(),prixDecimal,peutBouger);
+        Candidature candidature = new Candidature(idCandidature,currentUser.getDisplayName(),currentUser.getUid(),prixDecimal,peutBouger);
 
         demandeActuelle.getCandidatures().add(candidature);
 

@@ -63,21 +63,27 @@ public class Candidature {
     public boolean peutBouger;
     public Date dateCreation;
     public String dateMAJ;
+    public String userId;
 
 
     public Candidature(){}
 
-    public Candidature(int idCandidature,String nomPostulant, Integer prixPropose, boolean peutBouger) {
+    public Candidature(int idCandidature,String nomPostulant,String userId, Integer prixPropose, boolean peutBouger) {
         this.idCandidature = idCandidature;
         this.nomPostulant=nomPostulant;
         this.prixPropose=prixPropose;
         this.peutBouger=peutBouger;
         this.dateCreation=Calendar.getInstance().getTime();
+        this.userId= userId;
 
     }
 
     @Override
     public String toString() {
         return nomPostulant;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 }
