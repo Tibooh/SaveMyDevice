@@ -53,7 +53,7 @@ public class MyDemandFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // Vous pouvez changer le titre dans la toolbar de vos differents fragments
-        getActivity().setTitle("Demandes en cours");
+        getActivity().setTitle("Mes demandes");
     }
 }
 

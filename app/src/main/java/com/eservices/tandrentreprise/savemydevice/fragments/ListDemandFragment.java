@@ -88,14 +88,6 @@ public class ListDemandFragment extends Fragment {
             }
         });
 
-        Button btnSearch = (Button) v.findViewById(R.id.btn_search);
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                app.getDemandeFilterd(modele.getSelectedItem().toString());
-                adapter.notifyDataSetChanged();
-            }
-        });
 
         //Cacher le bouton d'ajout si non connecté
         auth = FirebaseAuth.getInstance();

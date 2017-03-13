@@ -109,11 +109,7 @@ public class SignupFragment extends Fragment {
                         .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(getActivity(), "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
-                                //progressBar.setVisibility(View.GONE);
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
+
                                 if (!task.isSuccessful()) {
                                     Toast.makeText(getActivity(), "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
@@ -129,7 +125,7 @@ public class SignupFragment extends Fragment {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()) {
-                                                        Toast.makeText(getActivity(), "Pseudo ajouté" + task.getException(),
+                                                        Toast.makeText(getActivity(), "Votre compte a été créé avec succès" ,
                                                                 Toast.LENGTH_SHORT).show(); }
                                                 }
                                             });

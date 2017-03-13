@@ -81,7 +81,7 @@ public class CreateDemandFragment extends Fragment {
             type.setAdapter(adapter2);
 
             title = (EditText) v.findViewById(R.id.title);
-            detail = (EditText) v.findViewById(R.id.detail);
+            detail = (EditText) v.findViewById(R.id.detail); 
             modele = (Spinner) v.findViewById(R.id.modeleSpin);
             type = (Spinner) v.findViewById(R.id.typeSpin);
 
@@ -96,7 +96,7 @@ public class CreateDemandFragment extends Fragment {
                     if ((title.getText().toString()!=null)&&(detail.getText().toString() != null)) {
                         Demande demande = new Demande(title.getText().toString(), app.connectedUser.getVille(), detail.getText().toString(), type.getSelectedItem().toString(), modele.getSelectedItem().toString(), auth.getCurrentUser().getUid(), currentDate);
                         addDemande(demande);
-                        Toast.makeText(getActivity(), "La demande a été créé et ajouté à vos demande", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "La demande a été créée et ajoutée à vos demandes", Toast.LENGTH_SHORT).show();
                         Fragment fragment = new MyDemandFragment();
                         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                         ft.replace(R.id.content_frame, fragment);

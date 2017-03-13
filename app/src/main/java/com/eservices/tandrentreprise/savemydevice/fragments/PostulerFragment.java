@@ -58,6 +58,8 @@ public class PostulerFragment  extends Fragment{
     //private ProgressBar progressBar;
     private FirebaseAuth auth;
     Demande demande;
+    MyApplication app;
+
 
     @Override
     public void setArguments(Bundle args) {
@@ -86,7 +88,6 @@ public class PostulerFragment  extends Fragment{
         peutBouger = (Spinner) v.findViewById(R.id.peutBougerSpin);
         commentaire = (EditText) v.findViewById(R.id.commentaire);
         btnPostuler = (Button) v.findViewById(R.id.btn_postuler);
-        btnBack = (Button) v.findViewById(R.id.btn_back);
         final Demande demandeActuelle =((MyApplication) getActivity().getApplication()).demandeActuelle;
 
         //Button valider
@@ -116,17 +117,6 @@ public class PostulerFragment  extends Fragment{
             }
         });
 
-        //Button back
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new ListDemandFragment();
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.content_frame, fragment);
-                ft.commit();
-            }
-        });
-
         return v;
 
     }
@@ -140,6 +130,7 @@ public class PostulerFragment  extends Fragment{
     public void postuler(Demande demandeActuelle,String prix, boolean peutBouger){
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         List<Candidature> candidatureList= demandeActuelle.getCandidatures();
+        app = (MyApplication) getActivity().getApplication();
         int idCandidature = 1;
         int prixDecimal=Integer.parseInt(prix);
         if (candidatureList != null){
@@ -147,7 +138,7 @@ public class PostulerFragment  extends Fragment{
         }
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
 
-        Candidature candidature = new Candidature(idCandidature,currentUser.getDisplayName(),currentUser.getUid(),prixDecimal,peutBouger);
+        Candidature candidature = new Candidature(idCandidature,app.connectedUser.getPseudo(),currentUser.getUid(),prixDecimal,peutBouger);
 
         demandeActuelle.getCandidatures().add(candidature);
 

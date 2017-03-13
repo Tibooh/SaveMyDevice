@@ -45,17 +45,6 @@
             android:text="Non vendu"
             android:layout_toRightOf="@+id/modeleSpinFilter"/>
 
-        <Button
-            android:id="@+id/btn_search"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:background="@drawable/rounded_button"
-            android:text="Filtrer"
-            android:textColor="@android:color/white"
-            android:textAllCaps="false"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/checkbox_vendu"
-            android:textSize="14dp"/>
     </RelativeLayout>
 
 

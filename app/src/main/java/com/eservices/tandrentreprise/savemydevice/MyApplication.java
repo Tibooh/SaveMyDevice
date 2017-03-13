@@ -72,13 +72,14 @@ public class MyApplication extends Application {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 Demande demande = dataSnapshot.getValue(Demande.class);
+                supprimerAncienneDemande(demande.getIdDemande());
                 demands.add(demande);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 Demande demande = dataSnapshot.getValue(Demande.class);
-                demands.add(demande);
+                demands.remove(demande);
             }
 
 
@@ -86,7 +87,7 @@ public class MyApplication extends Application {
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     Demande demande = dataSnapshot.getValue(Demande.class);
-                    demands.add(demande);
+                    demands.remove(demande);
                 }
             }
 
@@ -116,13 +117,14 @@ public class MyApplication extends Application {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 User user = dataSnapshot.getValue(User.class);
+                supprimerAncienUser(user.getuIdUser());
                 users.add(user);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                users.add(user);
+                users.remove(user);
             }
 
 
@@ -130,7 +132,7 @@ public class MyApplication extends Application {
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     User user = data.getValue(User.class);
-                    users.add(user);
+                    users.remove(user);
                 }
             }
 
@@ -188,6 +190,31 @@ public class MyApplication extends Application {
                 if (modele.equals(d.getModeleAppareil())) {
                     filteredDemands.add(d);
                 }
+            }
+        }
+
+    }
+
+    public void supprimerAncienneDemande(String idDemande)
+
+    {
+        for (Demande demande : demands)
+        {
+            if (demande.getIdDemande().equals(idDemande))
+            {
+                demands.remove(demande);
+            }
+        }
+
+    }
+    public void supprimerAncienUser(String idUser)
+
+    {
+        for (User user  : users)
+        {
+            if (user.getuIdUser().equals(idUser))
+            {
+                demands.remove(user);
             }
         }
 
